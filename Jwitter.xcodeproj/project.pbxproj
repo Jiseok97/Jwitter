@@ -13,6 +13,10 @@
 		B639FC0F27B0E15600E07D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B639FC0E27B0E15600E07D34 /* Assets.xcassets */; };
 		B639FC1227B0E15600E07D34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B639FC1027B0E15600E07D34 /* LaunchScreen.storyboard */; };
 		B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F3C27B1606300717F2F /* MainTabController.swift */; };
+		B6941F3F27B1612100717F2F /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F3E27B1612100717F2F /* FeedController.swift */; };
+		B6941F4127B1615700717F2F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4027B1615700717F2F /* ExploreController.swift */; };
+		B6941F4327B1616700717F2F /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4227B1616700717F2F /* NotificationsController.swift */; };
+		B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4427B1617100717F2F /* ConversationsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		B639FC1127B0E15600E07D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B639FC1327B0E15600E07D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6941F3C27B1606300717F2F /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		B6941F3E27B1612100717F2F /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		B6941F4027B1615700717F2F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		B6941F4227B1616700717F2F /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		B6941F4427B1617100717F2F /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				B6941F3C27B1606300717F2F /* MainTabController.swift */,
+				B6941F3E27B1612100717F2F /* FeedController.swift */,
+				B6941F4027B1615700717F2F /* ExploreController.swift */,
+				B6941F4227B1616700717F2F /* NotificationsController.swift */,
+				B6941F4427B1617100717F2F /* ConversationsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -210,9 +222,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6941F4327B1616700717F2F /* NotificationsController.swift in Sources */,
+				B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */,
 				B639FC0627B0E15600E07D34 /* AppDelegate.swift in Sources */,
+				B6941F4127B1615700717F2F /* ExploreController.swift in Sources */,
 				B639FC0827B0E15600E07D34 /* SceneDelegate.swift in Sources */,
 				B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */,
+				B6941F3F27B1612100717F2F /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +379,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XK2FZR7MVH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Jwitter/Info.plist;
+				INFOPLIST_FILE = Jwitter/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -391,7 +407,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XK2FZR7MVH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Jwitter/Info.plist;
+				INFOPLIST_FILE = Jwitter/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
