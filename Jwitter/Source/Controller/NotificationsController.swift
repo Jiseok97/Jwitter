@@ -14,11 +14,13 @@ class NotificationsController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .yellow
+        configureUI()
     }
     
     // MARK: - Functions
     
-    
+    func configureUI() {
+        view.backgroundColor = .white
+        navigationItem.title = "Notifications"
+    }
 }

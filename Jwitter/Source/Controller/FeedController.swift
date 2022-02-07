@@ -14,11 +14,17 @@ class FeedController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .red
+        configureUI()
     }
     
     // MARK: - Functions
     
-    
+    func configureUI() {
+        view.backgroundColor = .white
+        
+        /// 가운데 로고 이미지 뷰
+        let logoView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
+        logoView.contentMode = .scaleAspectFit
+        navigationItem.titleView = logoView
+    }
 }
