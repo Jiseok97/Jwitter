@@ -15,13 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // 탭바 배경색 설정
-        if #available(iOS 15, *) {
+        if #available(iOS 13, *) {
             let appearance = UITabBarAppearance()
             let tabBar = UITabBar()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor.systemGray6
             tabBar.standardAppearance = appearance;
             UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        // 네비게이션 바 배경색 설정
+        if #available(iOS 13, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.systemGray6.withAlphaComponent(0.6)
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
         
         return true

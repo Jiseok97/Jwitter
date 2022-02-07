@@ -21,22 +21,30 @@ class MainTabController: UITabBarController {
     }
     
     // MARK: - Functions
-    
+    // 탭 바 구성
     func configureViewController() {
         
         let feed = FeedController()
-        feed.tabBarItem.image = UIImage(named: "home_unselected")
+        let nav1 = templateNavigationController(image: UIImage(named: "home_unselected")!, rootViewController: feed)
         
         let explore = ExploreController()
-        explore.tabBarItem.image = UIImage(named: "search_unselected")
+        let nav2 = templateNavigationController(image: UIImage(named: "search_unselected")!, rootViewController: explore)
         
         let notifications = NotificationsController()
-        notifications.tabBarItem.image = UIImage(named: "search_unselected")
+        let nav3 = templateNavigationController(image: UIImage(named: "search_unselected")!, rootViewController: notifications)
         
         let conversations = ConversationsController()
-        conversations.tabBarItem.image = UIImage(named: "search_unselected")
+        let nav4 = templateNavigationController(image: UIImage(named: "search_unselected")!, rootViewController: conversations)
         
-        viewControllers = [ feed, explore, notifications, conversations ]
+        viewControllers = [ nav1, nav2, nav3, nav4 ]
+    }
+    
+    // 네비게이션 설정
+    func templateNavigationController(image: UIImage, rootViewController: UIViewController) -> UINavigationController {
+        let nav = UINavigationController(rootViewController: rootViewController)
+        nav.tabBarItem.image = image
+        nav.navigationBar.barTintColor = .white
+        return nav
     }
     
 }
