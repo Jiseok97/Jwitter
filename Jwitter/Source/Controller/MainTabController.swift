@@ -11,6 +11,13 @@ class MainTabController: UITabBarController {
     
     // MARK: - Properties
     
+    let actionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .white
+        button.backgroundColor = .blue
+        button.setImage(UIImage(named:"new_tweet"), for: .normal)
+        return button
+    }()
     
     // MARK: - Life Cycle
     
@@ -18,9 +25,20 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
         
         configureViewController()
+        configureUI()
     }
     
     // MARK: - Functions
+    // UI 구성
+    func configureUI() {
+        // 우하단 버튼
+        view.addSubview(actionButton)
+        actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
+                            paddingBottom: 64, paddingRight: 16, width: 56, height: 56)
+        actionButton.layer.cornerRadius = 56 / 2
+    }
+    
+    
     // 탭 바 구성
     func configureViewController() {
         
