@@ -15,6 +15,7 @@
 		B688634927B1F78900F94A82 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688634827B1F78900F94A82 /* Extensions.swift */; };
 		B688634C27B1FCA600F94A82 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688634B27B1FCA600F94A82 /* LoginController.swift */; };
 		B688634E27B1FD0400F94A82 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688634D27B1FD0400F94A82 /* RegistrationController.swift */; };
+		B688635027B2088D00F94A82 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688634F27B2088D00F94A82 /* Utilities.swift */; };
 		B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F3C27B1606300717F2F /* MainTabController.swift */; };
 		B6941F3F27B1612100717F2F /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F3E27B1612100717F2F /* FeedController.swift */; };
 		B6941F4127B1615700717F2F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4027B1615700717F2F /* ExploreController.swift */; };
@@ -33,6 +34,7 @@
 		B688634827B1F78900F94A82 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B688634B27B1FCA600F94A82 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		B688634D27B1FD0400F94A82 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		B688634F27B2088D00F94A82 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B6941F3C27B1606300717F2F /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		B6941F3E27B1612100717F2F /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		B6941F4027B1615700717F2F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B688634827B1F78900F94A82 /* Extensions.swift */,
+				B688634F27B2088D00F94A82 /* Utilities.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			files = (
 				B6941F4327B1616700717F2F /* NotificationsController.swift in Sources */,
 				B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */,
+				B688635027B2088D00F94A82 /* Utilities.swift in Sources */,
 				B639FC0627B0E15600E07D34 /* AppDelegate.swift in Sources */,
 				B688634927B1F78900F94A82 /* Extensions.swift in Sources */,
 				B688634C27B1FCA600F94A82 /* LoginController.swift in Sources */,
