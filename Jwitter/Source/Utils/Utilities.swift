@@ -46,4 +46,22 @@ class Utilites {
          return tf
     }
     
+    
+    // MARK: - 로그인 및 회원가입 버튼 글씨 설정
+    func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {
+        let button = UIButton(type: .system)
+        
+        let attributedTitle = NSMutableAttributedString(string: firstPart,
+                                                        attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
+                                                                     NSAttributedString.Key.foregroundColor: UIColor.white])
+        
+        attributedTitle.append(NSMutableAttributedString(string: secondPart,
+                               attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14),
+                               NSAttributedString.Key.foregroundColor: UIColor.white]))
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return button
+    }
+    
 }
