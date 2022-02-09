@@ -70,7 +70,8 @@ class LoginController: UIViewController {
     
     // 회원가입 버튼 클릭
     @objc func handleShowSignUp() {
-        print("회원가입 버튼 클릭")
+        let signVC = RegistrationController()
+        navigationController?.pushViewController(signVC, animated: true)
     }
     
     
