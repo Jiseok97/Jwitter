@@ -77,7 +77,17 @@ class LoginController: UIViewController {
     
     // 로그인 버튼 클릭
     @objc func handleLogin() {
-        print("로그인 버튼 클릭")
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        AuthService.shared.logUserInt(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("로그인 에러: \(error)")
+                return
+            }
+            
+            print("DEBUG: 로그인에 성공했습니다.")
+        }
     }
     
     

@@ -21,7 +21,12 @@ struct AuthService {
     // Singleton
     static let shared = AuthService()
     
-    /// 회원 등록하기
+    /// 로그인 API
+    func logUserInt(withEmail email: String, password: String, completion: AuthDataResultCallback? ) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
+    /// 회원가입 API
     func registerUser(credentials: AuthCredentials, completion: @escaping(Error?, DatabaseReference) -> Void) {
         let email = credentials.email
         let password = credentials.password
