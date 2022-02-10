@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
     
     // MARK: - Properties
     
     private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -108,7 +110,31 @@ class RegistrationController: UIViewController {
     
     // 회원가입 버튼
     @objc func handleRegistration() {
-        print("회원가입 버튼 클릭")
+        guard let profileImage = profileImage else {
+            print("프로필 이미지를 선택해주세요.")
+            return
+        }
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
+        guard let username = usernameTextField.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            // 로그인 실패
+            if let error = error {
+                print("에러내역: \(error)")
+                return
+            }
+            
+            // 로그인 성공
+            guard let uid = result?.user.uid else { return }    // User ID
+            let values = [ "email": email, "username": username, "fullname": fullname ]
+            
+            REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
+                print("DEBUG: 유저 정보 업데이트를 성공했습니다.")
+            }
+            
+        }
     }
     
     // 로그인 뷰 이동
@@ -154,6 +180,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else { return }
+        self.profileImage = profileImage
         
         plusPhotoButton.layer.cornerRadius = 128 / 2
         plusPhotoButton.layer.borderColor = UIColor.white.cgColor

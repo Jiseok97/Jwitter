@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B626D53D27B4BA8D00A0C51A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */; };
+		B626D53F27B4C3B200A0C51A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B626D53E27B4C3B200A0C51A /* Constants.swift */; };
 		B639FC0627B0E15600E07D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B639FC0527B0E15600E07D34 /* AppDelegate.swift */; };
 		B639FC0827B0E15600E07D34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B639FC0727B0E15600E07D34 /* SceneDelegate.swift */; };
 		B639FC0D27B0E15600E07D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B639FC0B27B0E15600E07D34 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		5FDBE8363F7BD30846381C50 /* Pods-Jwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jwitter.debug.xcconfig"; path = "Target Support Files/Pods-Jwitter/Pods-Jwitter.debug.xcconfig"; sourceTree = "<group>"; };
 		7AC57F78150F18C42C9BBA3C /* Pods-Jwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jwitter.release.xcconfig"; path = "Target Support Files/Pods-Jwitter/Pods-Jwitter.release.xcconfig"; sourceTree = "<group>"; };
 		B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B626D53E27B4C3B200A0C51A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B639FC0227B0E15600E07D34 /* Jwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B639FC0527B0E15600E07D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B639FC0727B0E15600E07D34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				B688634827B1F78900F94A82 /* Extensions.swift */,
 				B688634F27B2088D00F94A82 /* Utilities.swift */,
+				B626D53E27B4C3B200A0C51A /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -195,7 +198,6 @@
 				5FDBE8363F7BD30846381C50 /* Pods-Jwitter.debug.xcconfig */,
 				7AC57F78150F18C42C9BBA3C /* Pods-Jwitter.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +310,7 @@
 				B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */,
 				B688634E27B1FD0400F94A82 /* RegistrationController.swift in Sources */,
 				B6941F3F27B1612100717F2F /* FeedController.swift in Sources */,
+				B626D53F27B4C3B200A0C51A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
