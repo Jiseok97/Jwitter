@@ -33,7 +33,7 @@ class MainTabController: UITabBarController {
     
     
     // MARK: - API
-    
+    /// 로그인 여부에 따른 UI 구분하는 기능
     func authenticateUserAndConfigureUI() {
         if Auth.auth().currentUser == nil {
             // 로그인 필요
@@ -49,6 +49,7 @@ class MainTabController: UITabBarController {
         }
     }
     
+    /// 로그아웃 기능
     func logUserOut() {
         do {
             try Auth.auth().signOut()

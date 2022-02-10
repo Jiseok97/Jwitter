@@ -86,7 +86,13 @@ class LoginController: UIViewController {
                 return
             }
             
-            print("DEBUG: 로그인에 성공했습니다.")
+//            guard let windows = UIApplication.shared.connectedScenes.first(where: { $0.})
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+            guard let tab = window.rootViewController as? MainTabController else { return }
+            // 로그인이 되었을 때, MainTabController에 있는 UI function 실행시키기
+            tab.authenticateUserAndConfigureUI()
+            
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

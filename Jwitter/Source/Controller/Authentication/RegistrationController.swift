@@ -123,7 +123,13 @@ class RegistrationController: UIViewController {
                                           username: username, profileImage: profileImage)
         
         AuthService.shared.registerUser(credentials: credentials) { (error, ref) in
-            print("DEBUG: 회원가입 성공적으로 완료되었습니다.")
+            // 회원가입 성공 시, 로그인 UI 불러오기
+            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+            guard let tab = window.rootViewController as? MainTabController else { return }
+            // 로그인이 되었을 때, MainTabController에 있는 UI function 실행시키기
+            tab.authenticateUserAndConfigureUI()
+            
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
