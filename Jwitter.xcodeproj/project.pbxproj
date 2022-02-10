@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B626D53D27B4BA8D00A0C51A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */; };
 		B639FC0627B0E15600E07D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B639FC0527B0E15600E07D34 /* AppDelegate.swift */; };
 		B639FC0827B0E15600E07D34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B639FC0727B0E15600E07D34 /* SceneDelegate.swift */; };
 		B639FC0D27B0E15600E07D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B639FC0B27B0E15600E07D34 /* Main.storyboard */; };
@@ -21,9 +22,13 @@
 		B6941F4127B1615700717F2F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4027B1615700717F2F /* ExploreController.swift */; };
 		B6941F4327B1616700717F2F /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4227B1616700717F2F /* NotificationsController.swift */; };
 		B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4427B1617100717F2F /* ConversationsController.swift */; };
+		CA04511C087DC7C7BDD4461C /* libPods-Jwitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5FDBE8363F7BD30846381C50 /* Pods-Jwitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jwitter.debug.xcconfig"; path = "Target Support Files/Pods-Jwitter/Pods-Jwitter.debug.xcconfig"; sourceTree = "<group>"; };
+		7AC57F78150F18C42C9BBA3C /* Pods-Jwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jwitter.release.xcconfig"; path = "Target Support Files/Pods-Jwitter/Pods-Jwitter.release.xcconfig"; sourceTree = "<group>"; };
+		B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B639FC0227B0E15600E07D34 /* Jwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B639FC0527B0E15600E07D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B639FC0727B0E15600E07D34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		B6941F4027B1615700717F2F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		B6941F4227B1616700717F2F /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		B6941F4427B1617100717F2F /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jwitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +53,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA04511C087DC7C7BDD4461C /* libPods-Jwitter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0062E0DC8C560D080664659D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B639FBF927B0E15600E07D34 = {
 			isa = PBXGroup;
 			children = (
 				B639FC0427B0E15600E07D34 /* Jwitter */,
 				B639FC0327B0E15600E07D34 /* Products */,
+				E83657E65C4A4B45F21688BB /* Pods */,
+				0062E0DC8C560D080664659D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +89,7 @@
 		B639FC0427B0E15600E07D34 /* Jwitter */ = {
 			isa = PBXGroup;
 			children = (
+				B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */,
 				B6941F3327B15FDB00717F2F /* Application */,
 				B6941F3427B15FF400717F2F /* Resources */,
 				B6941F3527B15FFD00717F2F /* Source */,
@@ -171,6 +189,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E83657E65C4A4B45F21688BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5FDBE8363F7BD30846381C50 /* Pods-Jwitter.debug.xcconfig */,
+				7AC57F78150F18C42C9BBA3C /* Pods-Jwitter.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,6 +206,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B639FC1627B0E15600E07D34 /* Build configuration list for PBXNativeTarget "Jwitter" */;
 			buildPhases = (
+				C9A6115475C122F32FBD97E0 /* [CP] Check Pods Manifest.lock */,
 				B639FBFE27B0E15600E07D34 /* Sources */,
 				B639FBFF27B0E15600E07D34 /* Frameworks */,
 				B639FC0027B0E15600E07D34 /* Resources */,
@@ -230,12 +259,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				B639FC1227B0E15600E07D34 /* LaunchScreen.storyboard in Resources */,
+				B626D53D27B4BA8D00A0C51A /* GoogleService-Info.plist in Resources */,
 				B639FC0F27B0E15600E07D34 /* Assets.xcassets in Resources */,
 				B639FC0D27B0E15600E07D34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C9A6115475C122F32FBD97E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Jwitter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B639FBFE27B0E15600E07D34 /* Sources */ = {
@@ -396,6 +451,7 @@
 		};
 		B639FC1727B0E15600E07D34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FDBE8363F7BD30846381C50 /* Pods-Jwitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -424,6 +480,7 @@
 		};
 		B639FC1827B0E15600E07D34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AC57F78150F18C42C9BBA3C /* Pods-Jwitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
