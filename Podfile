@@ -9,5 +9,7 @@ target 'Jwitter' do
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
 
+  # For Image
+  pod 'SDWebImage', '~> 5.0'
 
 end

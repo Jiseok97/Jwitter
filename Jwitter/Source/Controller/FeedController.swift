@@ -26,5 +26,12 @@ class FeedController: UIViewController {
         let logoView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         logoView.contentMode = .scaleAspectFit
         navigationItem.titleView = logoView
+        
+        let profileImageView = UIImageView()
+        profileImageView.backgroundColor = .twitterBlue
+        profileImageView.setDimensions(width: 32, height: 32)
+        profileImageView.layer.cornerRadius = 32 / 2
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
 }
