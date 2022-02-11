@@ -53,6 +53,7 @@
 		B6941F4027B1615700717F2F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		B6941F4227B1616700717F2F /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		B6941F4427B1617100717F2F /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		B6FA4C5927B619E800A23D18 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jwitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +72,7 @@
 		0062E0DC8C560D080664659D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6FA4C5927B619E800A23D18 /* libSDWebImage.a */,
 				BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */,
 			);
 			name = Frameworks;

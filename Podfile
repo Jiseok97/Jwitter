@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '8.0'
 
 target 'Jwitter' do
   
@@ -10,6 +10,6 @@ target 'Jwitter' do
   pod 'Firebase/Auth'
 
   # For Image
-  pod 'SDWebImage', '~> 5.0'
+  pod 'SDWebImage', :modular_headers => true
 
 end
