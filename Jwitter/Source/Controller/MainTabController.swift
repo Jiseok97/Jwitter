@@ -33,6 +33,12 @@ class MainTabController: UITabBarController {
     
     
     // MARK: - API
+    
+    func fetchUser() {
+        UserService.shared.fetchUser()
+    }
+    
+    
     /// 로그인 여부에 따른 UI 구분하는 기능
     func authenticateUserAndConfigureUI() {
         if Auth.auth().currentUser == nil {
@@ -46,6 +52,7 @@ class MainTabController: UITabBarController {
             // 로그인
             configureViewController()
             configureUI()
+            fetchUser()
         }
     }
     
