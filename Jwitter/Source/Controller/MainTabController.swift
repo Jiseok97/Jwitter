@@ -43,13 +43,6 @@ class MainTabController: UITabBarController {
     
     // MARK: - API
     
-    func fetchUser() {
-        UserService.shared.fetchUser { user in
-            self.user = user
-        }
-    }
-    
-    
     /// 로그인 여부에 따른 UI 구분하는 기능
     func authenticateUserAndConfigureUI() {
         if Auth.auth().currentUser == nil {
@@ -67,6 +60,13 @@ class MainTabController: UITabBarController {
         }
     }
     
+    /// 유저 정보 가져오기
+    func fetchUser() {
+        UserService.shared.fetchUser { user in
+            self.user = user
+        }
+    }
+    
     /// 로그아웃 기능
     func logUserOut() {
         do {
@@ -80,8 +80,11 @@ class MainTabController: UITabBarController {
     
     // MARK: - Selectors
     
+    /// 우하단 버튼
     @objc func handleActionbuttonTapped() {
-        // 버튼 클릭 이벤트 추가하기
+        let nav = UINavigationController(rootViewController: UploadTweetController())
+        nav.modalPresentationStyle = .overFullScreen
+        present(nav, animated: true, completion: nil)
     }
     
     

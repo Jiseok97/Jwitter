@@ -31,6 +31,7 @@ class FeedController: UIViewController {
         /// 가운데 로고 이미지 뷰
         let logoView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         logoView.contentMode = .scaleAspectFit
+        logoView.setDimensions(width: 44, height: 44)
         navigationItem.titleView = logoView
         
     }

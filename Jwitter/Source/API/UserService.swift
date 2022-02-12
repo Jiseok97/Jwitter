@@ -8,6 +8,7 @@
 import Firebase
 
 struct UserService {
+    /// 사용자 데이터 가져오는 API 싱글톤 객체
     static let shared = UserService()
     
     /// 사용자 데이터 가져오는 API
