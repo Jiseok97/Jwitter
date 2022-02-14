@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B600967927B94B1A00B19DDE /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600967827B94B1A00B19DDE /* CaptionTextView.swift */; };
 		B600F71627BA17F000FC0CF0 /* TweetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600F71527BA17F000FC0CF0 /* TweetService.swift */; };
+		B600F71827BA1D9B00FC0CF0 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B600F71727BA1D9B00FC0CF0 /* Tweet.swift */; };
 		B608777B27B54E1400D1BD02 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B608777A27B54E1400D1BD02 /* AuthService.swift */; };
 		B626D53D27B4BA8D00A0C51A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */; };
 		B626D53F27B4C3B200A0C51A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B626D53E27B4C3B200A0C51A /* Constants.swift */; };
@@ -37,6 +38,7 @@
 		7AC57F78150F18C42C9BBA3C /* Pods-Jwitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jwitter.release.xcconfig"; path = "Target Support Files/Pods-Jwitter/Pods-Jwitter.release.xcconfig"; sourceTree = "<group>"; };
 		B600967827B94B1A00B19DDE /* CaptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 		B600F71527BA17F000FC0CF0 /* TweetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetService.swift; sourceTree = "<group>"; };
+		B600F71727BA1D9B00FC0CF0 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		B608777A27B54E1400D1BD02 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B626D53C27B4BA8D00A0C51A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B626D53E27B4C3B200A0C51A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				B63B7BC427B60CB9008D2EB6 /* User.swift */,
+				B600F71727BA1D9B00FC0CF0 /* Tweet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				B688634E27B1FD0400F94A82 /* RegistrationController.swift in Sources */,
 				B6941F3F27B1612100717F2F /* FeedController.swift in Sources */,
 				B626D53F27B4C3B200A0C51A /* Constants.swift in Sources */,
+				B600F71827BA1D9B00FC0CF0 /* Tweet.swift in Sources */,
 				B600F71627BA17F000FC0CF0 /* TweetService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

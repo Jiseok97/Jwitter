@@ -22,4 +22,18 @@ struct TweetService {
         // 써야할 메소드의 completion을 매개변수 completion에 미리 선언
         REF_TWEETS.childByAutoId().updateChildValues(values, withCompletionBlock: completion)
     }
+    
+    
+    /// 트윗 데이터 가져오는 함수
+    func feetchTwetts(completion: @escaping([Tweet]) -> Void) {
+        var tweets = [Tweet]()
+        
+        REF_TWEETS.observe(.childAdded) { snapshot in
+            guard let dicitionary = snapshot.value as? [String: Any] else { return }
+            let tweetID = snapshot.key
+            let tweet = Tweet(tweetID: tweetID, dictionary: dicitionary)
+            tweets.append(tweet)
+            completion(tweets)
+        }
+    }
 }
