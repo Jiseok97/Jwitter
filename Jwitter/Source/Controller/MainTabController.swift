@@ -62,7 +62,8 @@ class MainTabController: UITabBarController {
     
     /// 유저 정보 가져오기
     func fetchUser() {
-        UserService.shared.fetchUser { user in
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.shared.fetchUser(uid: uid) { user in
             self.user = user
         }
     }
