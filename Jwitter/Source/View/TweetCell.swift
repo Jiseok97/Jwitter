@@ -7,6 +7,13 @@
 
 import UIKit
 
+// class에서만 사용 가능하도록 설정
+protocol TweetCellDelegate: class {
+    /// 피드에 유저 프로필 이미지 클릭시 이벤트 처리 함수
+    func handleProfileImageTapped()
+}
+
+
 class TweetCell: UICollectionViewCell {
     
     // MARK: - Properties
@@ -15,13 +22,22 @@ class TweetCell: UICollectionViewCell {
         didSet { configure() }
     }
     
-    private let profileImageView: UIImageView = {   // 유저 프로필 이미지
+    weak var delegate: TweetCellDelegate?
+    
+    private lazy var profileImageView: UIImageView = {   // 유저 프로필 이미지
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48 / 2
         iv.backgroundColor = .twitterBlue
+        
+        // Image View엔 addTarget이 없어 제스처로 처리
+        // 유저 상세 정보로 이동
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTapped))
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
+        
         return iv
     }()
     
@@ -117,6 +133,11 @@ class TweetCell: UICollectionViewCell {
     
     
     // MARK: - Selectors
+    
+    @objc func handleProfileImageTapped() {
+        print("DEBUG: Profile image Tapped self")
+        delegate?.handleProfileImageTapped()
+    }
     
     @objc func handleCommentTapped() {
         
