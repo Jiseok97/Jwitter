@@ -25,16 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tabBar = UITabBar()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor.systemGray6
-            tabBar.standardAppearance = appearance;
+            tabBar.standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
         // 네비게이션 바 배경색 설정
         if #available(iOS 13, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.systemGray6
+            appearance.backgroundColor = .white
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//            UINavigationBar.appearance().compactAppearance = appearance
         }
         
         return true

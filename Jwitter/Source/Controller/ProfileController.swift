@@ -24,6 +24,10 @@ class ProfileController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.barStyle = .black
+        // AppDelegate에서 15 버전 업데이트 네비게이션 바 대응 설정으로 인해
+        // 상태표시줄 흰색 변경이 힘들어보임, 대체 방법 구축하기
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -31,8 +35,7 @@ class ProfileController: UICollectionViewController {
     
     func configureColletionView() {
         collectionView.backgroundColor = .white
-        // 상태표시줄 여백 없애기
-        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.contentInsetAdjustmentBehavior = .never              // 상태표시줄 여백 없애기
         
         collectionView.register(TweetCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.register(ProfileHeader.self,
@@ -75,7 +78,7 @@ extension ProfileController {
 
 extension ProfileController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 300)
+        return CGSize(width: view.frame.width, height: 350)     // 헤더 높이
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
