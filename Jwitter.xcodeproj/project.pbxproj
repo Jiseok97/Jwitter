@@ -36,6 +36,7 @@
 		B6941F4327B1616700717F2F /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4227B1616700717F2F /* NotificationsController.swift */; };
 		B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4427B1617100717F2F /* ConversationsController.swift */; };
 		B6EAE11127BC904500D5D950 /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EAE11027BC904500D5D950 /* ProfileFilterCell.swift */; };
+		B6EAE11327BC9DE800D5D950 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EAE11227BC9DE800D5D950 /* ProfileHeaderViewModel.swift */; };
 		CA04511C087DC7C7BDD4461C /* libPods-Jwitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		B6941F4227B1616700717F2F /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		B6941F4427B1617100717F2F /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 		B6EAE11027BC904500D5D950 /* ProfileFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterCell.swift; sourceTree = "<group>"; };
+		B6EAE11227BC9DE800D5D950 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		B6FA4C5927B619E800A23D18 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Jwitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				B63990DA27BB57960062692C /* TweetViewModel.swift */,
+				B6EAE11227BC9DE800D5D950 /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				B691D72327BA6FF00041117A /* TweetCell.swift in Sources */,
 				B688634C27B1FCA600F94A82 /* LoginController.swift in Sources */,
 				B608777B27B54E1400D1BD02 /* AuthService.swift in Sources */,
+				B6EAE11327BC9DE800D5D950 /* ProfileHeaderViewModel.swift in Sources */,
 				B630A92527B7C0BF00215CED /* UploadTweetController.swift in Sources */,
 				B63B7BC527B60CB9008D2EB6 /* User.swift in Sources */,
 				B6941F4127B1615700717F2F /* ExploreController.swift in Sources */,
