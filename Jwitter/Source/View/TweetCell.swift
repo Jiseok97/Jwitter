@@ -10,7 +10,7 @@ import UIKit
 // class에서만 사용 가능하도록 설정
 protocol TweetCellDelegate: class {
     /// 피드에 유저 프로필 이미지 클릭시 이벤트 처리 함수
-    func handleProfileImageTapped()
+    func handleProfileImageTapped(_ cell: TweetCell)
 }
 
 
@@ -136,7 +136,7 @@ class TweetCell: UICollectionViewCell {
     
     @objc func handleProfileImageTapped() {
         print("DEBUG: Profile image Tapped self")
-        delegate?.handleProfileImageTapped()
+        delegate?.handleProfileImageTapped(self)
     }
     
     @objc func handleCommentTapped() {

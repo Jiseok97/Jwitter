@@ -11,6 +11,10 @@ class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Properties
     
+    var user: User? {
+        didSet { configure() }
+    }
+    
     private let filterBar = ProfileFilterView()
     
     private lazy var containerView: UIView = {          // 헤더 컨테이너 뷰
@@ -76,11 +80,36 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
-    private let underlineView: UIView = {
+    private let underlineView: UIView = {               // 필터 탭 누를 때 따라다니는 아래 애니메이션 뷰
         let view = UIView()
         view.backgroundColor = .twitterBlue
         return view
     }()
+    
+    private let followingLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "0 Following"
+        
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowersTapped))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(followTap)
+        
+        return label
+    }()
+    
+    private let followerslabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "2 Followers"
+        
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowingTapped))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(followTap)
+        
+        return label
+    }()
+    
     
     // MARK: - Life Cycle
     
@@ -111,6 +140,14 @@ class ProfileHeader: UICollectionReusableView {
         userDetailsStack.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor,
                                 paddingTop: 8, paddingLeft: 12, paddingRight: 12)
         
+        let followStack = UIStackView(arrangedSubviews: [ followingLabel, followerslabel ])
+        followStack.axis = .horizontal
+        followStack.spacing = 8
+        followStack.distribution = .fillEqually
+        
+        addSubview(followStack)
+        followStack.anchor(top: userDetailsStack.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 12)
+        
         addSubview(filterBar)
         filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
         
@@ -133,12 +170,35 @@ class ProfileHeader: UICollectionReusableView {
         
     }
     
+    /// 팔로워 클릭 이벤트 처리
+    @objc func handleFollowersTapped() {
+        
+    }
+    
+    /// 팔로잉 클릭 이벤트 처리
+    @objc func handleFollowingTapped() {
+        
+    }
+    
+    
+    // MARK: - Functions
+    
+    func configure() {
+        guard let user = user else { return }
+        
+        let viewModel = ProfileHeaderViewModel(user: user)
+        
+        followingLabel.attributedText = viewModel.followingString
+        followerslabel.attributedText = viewModel.followerString
+    }
+    
 }
 
 
 // MARK: - ProfileFilterViewDelegate
 
 extension ProfileHeader: ProfileFilterViewDelegate {
+    // ProfileFilter View의 Collection View Delegate(didSelectItemAt)에 구현 되어 있는 Protocol
     func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
         guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else { return }
         

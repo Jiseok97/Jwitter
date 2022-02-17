@@ -14,12 +14,24 @@ class ProfileController: UICollectionViewController {
         
     // MARK: - Properties
     
+    private let user: User
     
     // MARK: - Life Cycle
+    
+    init(user: User) {
+        self.user = user
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureColletionView()
+        
+        print("DEBUG: User is \(user.username)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +64,8 @@ extension ProfileController {
     // Apple → Collection View에 표시할 supplementary(보조) View를 제공하도록 데이터 원본 개체에 요청합니다
     // configure header ▾
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath)
-        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! ProfileHeader
+        header.user = user
         return header
     }
 }
