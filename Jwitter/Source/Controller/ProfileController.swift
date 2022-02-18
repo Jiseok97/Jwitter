@@ -20,7 +20,7 @@ class ProfileController: UICollectionViewController {
     
     init(user: User) {
         self.user = user
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())      // Profile Controller → UICollectionViewController 떄문에
     }
     
     required init?(coder: NSCoder) {

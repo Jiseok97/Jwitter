@@ -37,6 +37,14 @@ struct ProfileHeaderViewModel {
         return attributedText(withValue: 2, text: "following")
     }
     
+    var actionButtonTitle: String {                 // 내 계정이면 프로필 편집, 아니면 팔로우 버튼
+        if user.isCurrentUser {
+            return "프로필 편집"
+        } else {
+            return "팔로우"
+        }
+    }
+    
     init(user: User) {
         self.user = user
     }
