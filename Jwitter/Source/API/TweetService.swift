@@ -47,4 +47,23 @@ struct TweetService {
             }
         }
     }
+    
+    /// 해당 유저의 트윗 데이터 가져오는 함수
+    func fetchTweets(forUser user: User, completion: @escaping([Tweet]) -> Void) {
+        var tweets = [Tweet]()
+        REF_USER_TWEETS.child(user.uid).observe(.childAdded) { snapshot in
+            let tweetID = snapshot.key
+            
+            REF_TWEETS.child(tweetID).observeSingleEvent(of: .value) { snapshot in
+                guard let dicitionary = snapshot.value as? [String: Any] else { return }
+                guard let uid = dicitionary["uid"] as? String else { return }
+                
+                UserService.shared.fetchUser(uid: uid) { user in
+                    let tweet = Tweet(user: user, tweetID: tweetID, dictionary: dicitionary)
+                    tweets.append(tweet)
+                    completion(tweets)
+                }
+            }
+        }
+    }
 }
