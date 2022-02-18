@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol ProfileHeaderDelegate: class {
+    // ProfileHeader는 UICollectionReusableView라서 UIViewController의 dismiss 기능이 없음
+    /// 프로필 헤더의 dismiss 기능을 위한 Protocol
+    func handleDismissal ()
+}
+
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: - Properties
@@ -15,6 +21,7 @@ class ProfileHeader: UICollectionReusableView {
         didSet { configure() }
     }
     
+    weak var delegate: ProfileHeaderDelegate?
     private let filterBar = ProfileFilterView()
     
     private lazy var containerView: UIView = {          // 헤더 컨테이너 뷰
@@ -89,8 +96,6 @@ class ProfileHeader: UICollectionReusableView {
     private let followingLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "0 Following"
-        
         let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowersTapped))
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(followTap)
@@ -100,8 +105,6 @@ class ProfileHeader: UICollectionReusableView {
     
     private let followerslabel: UILabel = {
         let label = UILabel()
-        
-        label.text = "2 Followers"
         
         let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowingTapped))
         label.isUserInteractionEnabled = true
@@ -163,7 +166,7 @@ class ProfileHeader: UICollectionReusableView {
     // MARK: - Selectors
     
     @objc func handleDismissTapped() {
-        
+        delegate?.handleDismissal()
     }
     
     @objc func handleEditProfileFollow() {
