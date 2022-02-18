@@ -22,6 +22,7 @@ class TweetCell: UICollectionViewCell {
         didSet { configure() }
     }
     
+    // 순환참조를 피하기 위한 weak
     weak var delegate: TweetCellDelegate?
     
     private lazy var profileImageView: UIImageView = {   // 유저 프로필 이미지

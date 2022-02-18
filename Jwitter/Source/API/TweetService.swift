@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import UIKit
 
 struct TweetService {
     static let shared = TweetService()
@@ -19,8 +20,14 @@ struct TweetService {
                       "retweets": 0,
                       "caption": caption] as [String : Any]
         
+        let ref = REF_TWEETS.childByAutoId()
+        
         // 써야할 메소드의 completion을 매개변수 completion에 미리 선언
-        REF_TWEETS.childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+        ref.updateChildValues(values) { (err, ref) in
+            // 트윗 업로드가 완료된 후 사용자 트윗 구조를 업데이트
+            guard let tweetID = ref.key else { return }
+            REF_USER_TWEETS.child(uid).updateChildValues([tweetID: 1], withCompletionBlock: completion)
+        }
     }
     
     
