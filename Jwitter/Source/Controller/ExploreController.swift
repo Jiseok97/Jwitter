@@ -17,11 +17,29 @@ class ExploreController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     
+    private var filterdUsers = [User]() {
+        didSet { tableView.reloadData() }
+    }
+    
+    private var inSearchMode: Bool {
+        // 검색창이 활성화되거나, 검색창에 텍스트가 존재하는 경우 Mode = true
+        return searchController.isActive && !searchController.searchBar.text!.isEmpty
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         fetchUser()
+        configureSearchController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - API
@@ -43,21 +61,52 @@ class ExploreController: UITableViewController {
         tableView.rowHeight = 60
         tableView.separatorStyle = .none
     }
+    
+    func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "유저 검색"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+    }
+    
 }
 
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate/DataSource
 
 extension ExploreController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return inSearchMode ? filterdUsers.count : users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
         
-        cell.user = users[indexPath.row]
+        // 검색 모드인지 여부에 따라 데이터 차별화
+        let user = inSearchMode ? filterdUsers[indexPath.row] : users[indexPath.row]
+        cell.user = user
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = inSearchMode ? filterdUsers[indexPath.row] : users[indexPath.row]
+        let controller = ProfileController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+
+// MARK: - UISearchResultsUpdating
+
+extension ExploreController: UISearchResultsUpdating {
+    // 검색창에 텍스트가 입력될 때 마다 호출되는 메서드
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+//        guard let searchText = searchController.searchBar.text?.lowercased() else { return }  닉네임이 소문자로 시작하는 경우 넣어주기
+        
+        filterdUsers = users.filter({ $0.username.contains(searchText) })
     }
 }
