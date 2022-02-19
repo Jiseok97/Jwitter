@@ -22,4 +22,17 @@ struct UserService {
             completion(user)
         }
     }
+    
+    /// 탐색 페이지를 위한 유저 정보 가져오는 API
+    func fetchUser(completion: @escaping([User]) -> Void) {
+        var users = [User]()
+        REF_USERS.observe(.childAdded) { snapshot in
+            let uid = snapshot.key
+            guard let dictionary = snapshot.value as? [String: AnyObject] else { return }
+            
+            let user = User(uid: uid, dictionary: dictionary)
+            users.append(user)
+            completion(users)
+        }
+    }
 }
