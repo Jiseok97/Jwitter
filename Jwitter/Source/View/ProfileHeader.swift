@@ -11,6 +11,7 @@ protocol ProfileHeaderDelegate: class {
     // ProfileHeader는 UICollectionReusableView라서 UIViewController의 dismiss 기능이 없음
     /// 프로필 헤더의 dismiss 기능을 위한 Protocol
     func handleDismissal ()
+    func handleEditProfileFollow(_ header: ProfileHeader)
 }
 
 class ProfileHeader: UICollectionReusableView {
