@@ -7,6 +7,9 @@
 
 import Firebase
 
+/// 팔로우/언팔로우 Completion
+typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
+
 struct UserService {
     /// 사용자 데이터 가져오는 API 싱글톤 객체
     static let shared = UserService()
@@ -37,11 +40,20 @@ struct UserService {
     }
     
     /// 유저 팔로우 기능
-    func followUser(uid: String, completion: @escaping(Error?, DatabaseReference) -> Void) {
+    func followUser(uid: String, completion: @escaping(DatabaseCompletion)) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
         REF_USER_FOLLOWING.child(currentUid).updateChildValues([uid: 1]) { (err, ref) in
             REF_USER_FOLLOWERS.child(uid).updateChildValues([currentUid: 1], withCompletionBlock: completion)
+        }
+    }
+    
+    /// 유저 언팔로우 기능
+    func unfollowUser(uid: String, completion: @escaping(DatabaseCompletion)) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        REF_USER_FOLLOWING.child(currentUid).child(uid).removeValue { (err, ref) in
+            REF_USER_FOLLOWERS.child(uid).child(currentUid).removeValue(completionBlock: completion)
         }
     }
 }
