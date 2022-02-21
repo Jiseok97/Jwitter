@@ -127,8 +127,10 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
 
 extension ProfileController: ProfileHeaderDelegate {
     func handleEditProfileFollow(_ header: ProfileHeader) {
-        
-        print("DEBUG: 버튼 누르기 전 유저 팔로우 상태 = \(user.isFollowed)")
+        // 본인 계정일 경우에도 팔로우 기능이 되기 때문에 수정하기 위한 if문
+        if user.isCurrentUser {
+            return
+        }
         
         if user.isFollowed {
             /// 유저 언팔로우
