@@ -32,11 +32,11 @@ struct ProfileHeaderViewModel {
     let usernameText: String
     
     var followerString: NSAttributedString? {
-        return attributedText(withValue: 0, text: "followers")
+        return attributedText(withValue: user.stats?.followers ?? 0, text: "followers")
     }
     
     var followingString: NSAttributedString? {
-        return attributedText(withValue: 2, text: "following")
+        return attributedText(withValue: user.stats?.following ?? 0, text: "following")
     }
     
     var actionButtonTitle: String {                 // 내 계정이면 프로필 편집, 아니면 팔로우 버튼

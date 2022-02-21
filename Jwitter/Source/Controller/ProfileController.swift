@@ -36,6 +36,7 @@ class ProfileController: UICollectionViewController {
         configureColletionView()
         fetchTweets()
         checkIfUserIsFollowed()
+        fetchUserStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,13 +50,14 @@ class ProfileController: UICollectionViewController {
     
     
     // MARK: - API
-    
+    /// 트윗 데이터 가져오기
     func fetchTweets() {
         TweetService.shared.fetchTweets(forUser: user) { tweets in
             self.tweets = tweets
         }
     }
     
+    /// 유저 팔로우 여부 체크 기능 및 UI 업데이트
     func checkIfUserIsFollowed() {
         UserService.shared.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
             self.user.isFollowed = isFollowed
@@ -63,6 +65,13 @@ class ProfileController: UICollectionViewController {
         }
     }
     
+    /// 유저의 팔로우/팔로잉 데이터 가져오기
+    func fetchUserStatus() {
+        UserService.shared.fetchUserStatus(uid: user.uid) { stats in
+            self.user.stats = stats
+            self.collectionView.reloadData()
+        }
+    }
     
     // MARK: - Functions
     
