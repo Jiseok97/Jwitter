@@ -169,7 +169,7 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     @objc func handleEditProfileFollow() {
-        
+        delegate?.handleEditProfileFollow(self)
     }
     
     /// 팔로워 클릭 이벤트 처리

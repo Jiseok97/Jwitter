@@ -35,4 +35,13 @@ struct UserService {
             completion(users)
         }
     }
+    
+    /// 유저 팔로우 기능
+    func followUser(uid: String, completion: @escaping(Error?, DatabaseReference) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        REF_USER_FOLLOWING.child(currentUid).updateChildValues([uid: 1]) { (err, ref) in
+            REF_USER_FOLLOWERS.child(uid).updateChildValues([currentUid: 1], withCompletionBlock: completion)
+        }
+    }
 }
