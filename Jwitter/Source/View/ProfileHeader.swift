@@ -19,6 +19,8 @@ class ProfileHeader: UICollectionReusableView {
     // MARK: - Properties
     
     var user: User? {
+        // 유저의 요소가 하나라도 변경이 되면 configure() 함수 호출
+        // ex) 팔로우/언팔로우 관련 UI 역시 업데이트 됨
         didSet { configure() }
     }
     
@@ -54,7 +56,7 @@ class ProfileHeader: UICollectionReusableView {
         return iv
     }()
     
-    private let editProfileFollowButton: UIButton = {   // 유저 프로필 수정 버튼
+    lazy var editProfileFollowButton: UIButton = {   // 유저 프로필 수정 버튼
         let button = UIButton()
         button.setTitle("Loading", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)

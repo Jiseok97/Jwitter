@@ -40,11 +40,22 @@ struct ProfileHeaderViewModel {
     }
     
     var actionButtonTitle: String {                 // 내 계정이면 프로필 편집, 아니면 팔로우 버튼
+        // 본인 프로필을 보인이 들어갔을 때
         if user.isCurrentUser {
             return "프로필 편집"
-        } else {
+        }
+        
+        // 해당 유저를 팔로우하지 않고, 해당 유저가 본인의 프로필이 아닌 경우
+        if !user.isFollowed && !user.isCurrentUser {
             return "팔로우"
         }
+        
+        // 유저를 팔로우 하는 경우
+        if user.isFollowed {
+            return "팔로잉"
+        }
+        
+        return "로딩중"
     }
     
     init(user: User) {
