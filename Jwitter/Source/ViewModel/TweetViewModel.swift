@@ -25,6 +25,11 @@ struct TweetViewModel {
         return formatter.string(from: tweet.timestamp, to: now) ?? "2m"
     }
     
+    /// TweetHeader 사용될 ViewModel 메서드
+    var usernameText: String {
+        return "@\(user.username)"
+    }
+    
     var userInfoText: NSAttributedString {
         let title = NSMutableAttributedString(string: user.fullname,
                                               attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
