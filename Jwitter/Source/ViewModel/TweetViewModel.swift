@@ -77,4 +77,16 @@ struct TweetViewModel {
         
         return attributedTitle
     }
+    
+    
+    /// 해당 텍스트의 크기나 프레임을 파악한 다음 사이즈 지정해주는 메서드
+    func size(forWidth width: CGFloat) -> CGSize {
+        let measurementLabel = UILabel()
+        measurementLabel.text = tweet.caption
+        measurementLabel.numberOfLines = 0
+        measurementLabel.lineBreakMode = .byWordWrapping
+        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
+        measurementLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
+        return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)     // 최소한의 크기 지정
+    }
 }

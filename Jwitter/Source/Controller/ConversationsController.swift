@@ -21,6 +21,6 @@ class ConversationsController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = .white
-        navigationItem.title = "Messages"
+        navigationItem.title = "메세지"
     }
 }

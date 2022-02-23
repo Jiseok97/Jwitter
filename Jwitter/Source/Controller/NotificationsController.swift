@@ -21,6 +21,6 @@ class NotificationsController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = .white
-        navigationItem.title = "Notifications"
+        navigationItem.title = "알림"
     }
 }
