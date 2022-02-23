@@ -71,19 +71,8 @@ class TweetHeader: UICollectionReusableView {
         return button
     }()
     
-    private lazy var retweetsLabel: UILabel = {         // 리트윗 Lable
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "2 Retweets"
-        return label
-    }()
-    
-    private lazy var likesLabel: UILabel = {            // 좋아요 Label
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "0 Likes"
-        return label
-    }()
+    private lazy var retweetsLabel = UILabel()          // 리트윗 Lable
+    private lazy var likesLabel = UILabel()             // 좋아요 Label
     
     private lazy var stacksView: UIView = {             // 구분선, 리트윗, 좋아요 Label, 구분선 Stack View
         let view = UIView()
@@ -217,7 +206,9 @@ class TweetHeader: UICollectionReusableView {
         fullnameLabel.text = tweet.user.fullname
         usernameLabel.text = viewModel.usernameText
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
-        
+        dateLabel.text = viewModel.headerTimestamp
+        retweetsLabel.attributedText = viewModel.retweetsAtrributedString
+        likesLabel.attributedText = viewModel.likesAttributedString
     }
     
     /// 트윗 아래 버튼 구성 메서드

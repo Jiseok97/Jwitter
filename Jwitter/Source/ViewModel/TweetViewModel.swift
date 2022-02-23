@@ -30,6 +30,24 @@ struct TweetViewModel {
         return "@\(user.username)"
     }
     
+    /// 트윗 시간 Label 구성 메서드
+    var headerTimestamp: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a ∙ MM/dd/yyyy"
+//        formatter.dateFormat = "yyyy년MM월dd일 ∙ a hh:mm"
+        return formatter.string(from: tweet.timestamp)
+    }
+    
+    /// 트윗 게시물 → 리트윗 표시 Label 구성 메서드
+    var retweetsAtrributedString: NSAttributedString? {
+        return attributedText(withValue: tweet.retweetCount, text: "Retweets")
+    }
+    
+    /// 트윗 게시물 → 좋아요 표시 Label 구성 메서드
+    var likesAttributedString: NSAttributedString? {
+        return attributedText(withValue: tweet.likes, text: "Likes")
+    }
+    
     var userInfoText: NSAttributedString {
         let title = NSMutableAttributedString(string: user.fullname,
                                               attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
@@ -48,5 +66,15 @@ struct TweetViewModel {
     init(tweet: Tweet) {
         self.tweet = tweet
         self.user = tweet.user
+    }
+    
+    fileprivate func attributedText(withValue value: Int, text: String) -> NSAttributedString {
+        let attributedTitle = NSMutableAttributedString(string: "\(value)",
+                                                        attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        
+        attributedTitle.append(NSAttributedString(string: " \(text)",
+                                                  attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        
+        return attributedTitle
     }
 }
