@@ -15,7 +15,7 @@ class UploadTweetController: UIViewController {
     private let config: UploadTweetConfiguration
     private lazy var viewModel = UploadTweetViewModel(config: config)
     
-    private lazy var actionButton: UIButton = {
+    private lazy var actionButton: UIButton = {                         // 업로드 및 답장 보내는 버튼
         let button = UIButton(type: .system)
         button.backgroundColor = .twitterBlue
         button.setTitle("Tweet", for: .normal)
@@ -31,7 +31,7 @@ class UploadTweetController: UIViewController {
         return button
     }()
     
-    private let profileImageView: UIImageView = {
+    private let profileImageView: UIImageView = {                       // 프로필 이미지
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
@@ -41,7 +41,16 @@ class UploadTweetController: UIViewController {
         return iv
     }()
     
-    private let captionTextView = CaptionTextView()
+    private lazy var replyLabel: UILabel = {                                 // 답장 시 보이는 Label
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .lightGray
+        label.text = "replying to @BossJS"
+        label.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        return label
+    }()
+    
+    private let captionTextView = CaptionTextView()                     // 게시물 글
     
     
     
@@ -98,16 +107,27 @@ class UploadTweetController: UIViewController {
         view.backgroundColor = .white
         configureNavigationBar()
         
-        let stack = UIStackView(arrangedSubviews: [ profileImageView, captionTextView ])
-        stack.axis = .horizontal
+        let imageCaptionStack = UIStackView(arrangedSubviews: [ profileImageView, captionTextView ])
+        imageCaptionStack.axis = .horizontal
+        imageCaptionStack.spacing = 12
+        imageCaptionStack.alignment = .leading
+        
+        let stack = UIStackView(arrangedSubviews: [ replyLabel, imageCaptionStack ])
+        stack.axis = .vertical
         stack.spacing = 12
-        stack.alignment = .leading
         
         view.addSubview(stack)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor,
                      paddingTop: 16, paddingLeft: 16, paddingRight: 16)
         
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
+        
+        actionButton.setTitle(viewModel.actionButtonTitle, for: .normal)                    // 답장&트윗 버튼 구분
+        captionTextView.placeholderLable.text = viewModel.placeholderText
+        
+        replyLabel.isHidden = !viewModel.shouldShowReplyLabel
+        guard let replyText = viewModel.replyText else { return }
+        replyLabel.text = replyText
     }
     
     /// 네비게이션 바 설정
