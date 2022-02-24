@@ -84,8 +84,8 @@ struct TweetViewModel {
         let measurementLabel = UILabel()
         measurementLabel.text = tweet.caption
         measurementLabel.numberOfLines = 0
-        measurementLabel.lineBreakMode = .byWordWrapping
-        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
+        measurementLabel.lineBreakMode = .byWordWrapping                                        // 단어 기준으로 줄바꿈
+        measurementLabel.translatesAutoresizingMaskIntoConstraints = false                      // 자동 리사이징 기능 x
         measurementLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
         return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)     // 최소한의 크기 지정
     }

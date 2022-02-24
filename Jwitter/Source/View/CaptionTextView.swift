@@ -15,7 +15,7 @@ class CaptionTextView: UITextView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .darkGray
-        label.text = "무슨 일이 일어나고 있나요?"
+        label.text = "What's happening"
         return label
     }()
     

@@ -11,6 +11,8 @@ import UIKit
 protocol TweetCellDelegate: class {
     /// 피드에 유저 프로필 이미지 클릭시 이벤트 처리 함수
     func handleProfileImageTapped(_ cell: TweetCell)
+    /// 피드에 답장하는 메서드
+    func handleReplyTapped(_ cell: TweetCell)
 }
 
 
@@ -141,7 +143,7 @@ class TweetCell: UICollectionViewCell {
     }
     
     @objc func handleCommentTapped() {
-        
+        delegate?.handleReplyTapped(self)
     }
     
     @objc func handleRetweetTapped() {
