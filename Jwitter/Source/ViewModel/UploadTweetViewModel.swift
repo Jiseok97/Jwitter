@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// 트윗/답장 구분하기 위한 열거형
 enum UploadTweetConfiguration {
     case tweet
     case reply(Tweet)

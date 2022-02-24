@@ -156,8 +156,7 @@ class TweetHeader: UICollectionReusableView {
         
         addSubview(actionStack)
         actionStack.centerX(inView: self)
-        actionStack.anchor(bottom: bottomAnchor, paddingBottom: 12)
-//        actionStack.anchor(top: stacksView.bottomAnchor, paddingTop: 8)
+        actionStack.anchor(top: stacksView.bottomAnchor, paddingTop: 12)
     }
     
     required init?(coder: NSCoder) {
