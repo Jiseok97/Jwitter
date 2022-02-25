@@ -17,6 +17,7 @@ class ActionSheetLauncher: NSObject {
     private let tableView = UITableView()
     private var window: UIWindow?                     // 기본적으로 Action Sheet도 하나의 창이기 때문에 생성
                                                       // present처럼 보이기 원해서
+    private lazy var viewModel = ActionSheetViewModel(user: user)
     
     private lazy var blackView: UIView = {                                  // 액션 시트 올라올 때 뒷 배경 View
         let view = UIView()
@@ -85,7 +86,7 @@ class ActionSheetLauncher: NSObject {
         blackView.frame = window.frame
         
         window.addSubview(tableView)
-        let height = CGFloat(3 * 60) + 100                                             // Row Height = 60
+        let height = CGFloat(viewModel.option.count * 60) + 100                              // Row Height = 60
         tableView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
         
         UIView.animate(withDuration: 0.5) {
@@ -111,12 +112,12 @@ class ActionSheetLauncher: NSObject {
 
 extension ActionSheetLauncher: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.option.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ActionSheetCell
-        
+        cell.option = viewModel.option[indexPath.row]
         return cell
     }
 }

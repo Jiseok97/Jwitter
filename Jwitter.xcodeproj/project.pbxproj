@@ -41,6 +41,7 @@
 		B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4427B1617100717F2F /* ConversationsController.swift */; };
 		B69F481427C767D800B71649 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F481327C767D800B71649 /* UploadTweetViewModel.swift */; };
 		B6A7EBCE27C907E200AA57BC /* ActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A7EBCD27C907E200AA57BC /* ActionSheetCell.swift */; };
+		B6A7EBD027C913AF00AA57BC /* ActionSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A7EBCF27C913AF00AA57BC /* ActionSheetViewModel.swift */; };
 		B6EAE11127BC904500D5D950 /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EAE11027BC904500D5D950 /* ProfileFilterCell.swift */; };
 		B6EAE11327BC9DE800D5D950 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EAE11227BC9DE800D5D950 /* ProfileHeaderViewModel.swift */; };
 		CA04511C087DC7C7BDD4461C /* libPods-Jwitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC395E8DBDE44D6B5E2DA279 /* libPods-Jwitter.a */; };
@@ -85,6 +86,7 @@
 		B6941F4427B1617100717F2F /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 		B69F481327C767D800B71649 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
 		B6A7EBCD27C907E200AA57BC /* ActionSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetCell.swift; sourceTree = "<group>"; };
+		B6A7EBCF27C913AF00AA57BC /* ActionSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetViewModel.swift; sourceTree = "<group>"; };
 		B6EAE11027BC904500D5D950 /* ProfileFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterCell.swift; sourceTree = "<group>"; };
 		B6EAE11227BC9DE800D5D950 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		B6FA4C5927B619E800A23D18 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 				B63990DA27BB57960062692C /* TweetViewModel.swift */,
 				B6EAE11227BC9DE800D5D950 /* ProfileHeaderViewModel.swift */,
 				B69F481327C767D800B71649 /* UploadTweetViewModel.swift */,
+				B6A7EBCF27C913AF00AA57BC /* ActionSheetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */,
 				B60691BB27C4F86600C7FF11 /* TweetHeader.swift in Sources */,
 				B63990DB27BB57960062692C /* TweetViewModel.swift in Sources */,
+				B6A7EBD027C913AF00AA57BC /* ActionSheetViewModel.swift in Sources */,
 				B688634E27B1FD0400F94A82 /* RegistrationController.swift in Sources */,
 				B6941F3F27B1612100717F2F /* FeedController.swift in Sources */,
 				B63990E127BB86A70062692C /* ProfileFilterView.swift in Sources */,
