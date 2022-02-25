@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TweetHeaderDelegate: class {
+    func showActinoSheet()
+}
+
 class TweetHeader: UICollectionReusableView {
     
     // MARK: - Properties
@@ -15,6 +19,8 @@ class TweetHeader: UICollectionReusableView {
     var tweet: Tweet? {
         didSet { configure() }
     }
+    
+    weak var delegate: TweetHeaderDelegate?
     
     private lazy var profileImageView: UIImageView = {   // 유저 프로필 이미지
         let iv = UIImageView()
@@ -172,7 +178,7 @@ class TweetHeader: UICollectionReusableView {
     
     /// 옵션 버튼 클릭 시 나오는 Action Sheet 이벤트
     @objc func showActionSheet() {
-        print("DEBUG: Action Sheet 버튼 클릭")
+        delegate?.showActinoSheet()
     }
     
     /// 댓글 달기 버튼 클릭 이벤트
