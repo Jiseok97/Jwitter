@@ -75,10 +75,6 @@ class ActionSheetLauncher: NSObject {
             self.blackView.alpha = 0
             self.tableView.frame.origin.y += 300
         }
-//        completion: { _ in                                            // black View 그대로 존재, 투명하게 처리만 됨
-//            self.blackView.removeFromSuperview()                      // Completion을 통해 삭제 가능
-//            self.tableView.removeFromSuperview()
-//        }                                                             // 메모리 차이가 아주 미미하게 남
     }
     
     // MARK: - Functinos

@@ -13,6 +13,8 @@ protocol TweetCellDelegate: class {
     func handleProfileImageTapped(_ cell: TweetCell)
     /// 피드에 답장하는 메서드
     func handleReplyTapped(_ cell: TweetCell)
+    /// 피드에 좋아요 이벤트 메서드
+    func handleLikeTapped(_ cell: TweetCell)
 }
 
 
@@ -151,7 +153,7 @@ class TweetCell: UICollectionViewCell {
     }
     
     @objc func handleLikeTapped() {
-        
+        delegate?.handleLikeTapped(self)
     }
     
     @objc func handleShareTapped() {
