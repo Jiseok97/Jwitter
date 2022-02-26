@@ -16,8 +16,6 @@ struct UserService {
     
     /// 사용자 데이터 가져오는 API
     func fetchUser(uid: String, completion: @escaping(User) -> Void) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
         REF_USERS.child(uid).observeSingleEvent(of: .value) { snapshot in
             guard let dictionary = snapshot.value as? [String: AnyObject] else { return }
             
