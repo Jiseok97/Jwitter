@@ -99,7 +99,9 @@ struct TweetService {
         
         if tweet.didLike {
             // 좋아요 데이터 제거 → firebase
-            
+            REF_USER_LIKES.child(uid).child(tweet.tweetID).removeValue { (err, ref) in
+                REF_TWEET_LIKES.child(tweet.tweetID).removeValue(completionBlock: completion)
+            }
         } else {
             // 좋아요 데이터 추가 → firebase
             REF_USER_LIKES.child(uid).updateChildValues([tweet.tweetID: 1]) { (err, ref) in
