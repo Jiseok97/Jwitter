@@ -59,11 +59,9 @@ struct UserService {
     func checkIfUserIsFollowed(uid: String, completion: @escaping(Bool) -> Void) {
         // 유저의 isFollowd가 다시 켜도 false로 설정이 되기 때문에 기존 true값을 유지하기 위한 기능
         // currentUid인 유저가 uid의 데이터를 가지고 있는지 여부 return
-        
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
         REF_USER_FOLLOWING.child(currentUid).child(uid).observeSingleEvent(of: .value) { snapshot in
-            print("DEBUG: Snapshot is \(snapshot.exists())")
             completion(snapshot.exists())
         }
     }

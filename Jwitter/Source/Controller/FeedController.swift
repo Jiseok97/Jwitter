@@ -39,9 +39,22 @@ class FeedController: UICollectionViewController {
     
     // MARK: - API
     
+    /// 트윗 데이터 불러오기
     func fetchTweets() {
         TweetService.shared.feetchTwetts { tweets in
             self.tweets = tweets
+            self.checkIfUserLikedTweets(self.tweets)
+        }
+    }
+    
+    /// 트윗 좋아요 데이터 불러오기
+    func checkIfUserLikedTweets(_ tweets: [Tweet]) {
+        for (index, tweet) in tweets.enumerated() {
+            TweetService.shared.checkIfUserLikedTweet(tweet) { didLike in
+                guard didLike == true else { return }
+                
+                self.tweets[index].didLike = true
+            }
         }
     }
     
