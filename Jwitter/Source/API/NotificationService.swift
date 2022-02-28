@@ -29,4 +29,21 @@ struct NotificationService {
             REF_NOTIFICATIONS.child(user.uid).childByAutoId().updateChildValues(values)
         }
     }
+    
+    /// 알림 데이터 가져오는 메서드
+    func fetchNotifications(completion: @escaping([Notification]) -> Void) {
+        var notifications = [Notification]()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        REF_NOTIFICATIONS.child(uid).observe(.childAdded) { snapshot in
+            guard let dicitionary = snapshot.value as? [String: AnyObject] else { return }
+            guard let uid = dicitionary["uid"] as? String else { return }
+            
+            UserService.shared.fetchUser(uid: uid) { user in
+                let notification = Notification(user: user, dictionary: dicitionary)
+                notifications.append(notification)
+                completion(notifications)
+            }
+        }
+    }
 }
