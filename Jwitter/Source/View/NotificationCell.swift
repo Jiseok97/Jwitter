@@ -11,6 +11,10 @@ class NotificationCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var notification: Notification? {
+        didSet { configure() }
+    }
+    
     private lazy var profileImageView: UIImageView = {   // 유저 프로필 이미지
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -57,5 +61,15 @@ class NotificationCell: UITableViewCell {
     
     @objc func handleProfileImageTapped() {
         
+    }
+    
+    // MARK: - Functions
+    
+    func configure() {
+        guard let notification = notification else { return }
+        let viewModel = NotificationViewModel(notification: notification)
+        
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        notificationLabel.attributedText = viewModel.notificationText
     }
 }
