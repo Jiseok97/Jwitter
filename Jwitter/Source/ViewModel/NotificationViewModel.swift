@@ -50,6 +50,10 @@ struct NotificationViewModel {
         return user.profileImageUrl
     }
     
+    var shouldHideFollowButton: Bool {
+        return type != .follow
+    }
+    
     init(notification: Notification) {
         self.notification = notification
         self.type = notification.type
