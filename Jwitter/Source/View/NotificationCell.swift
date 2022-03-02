@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol NotificationCellDelegate: class {
+    /// 알림 탭 프로필 이미지 클릭 이벤트 처리 메서드
+    func didTapProfileImage(_ cell: NotificationCell)
+}
+
 class NotificationCell: UITableViewCell {
     
     // MARK: - Properties
@@ -14,6 +19,8 @@ class NotificationCell: UITableViewCell {
     var notification: Notification? {
         didSet { configure() }
     }
+    
+    weak var delegate: NotificationCellDelegate?
     
     private lazy var profileImageView: UIImageView = {   // 유저 프로필 이미지
         let iv = UIImageView()
@@ -60,7 +67,7 @@ class NotificationCell: UITableViewCell {
     // MARK: - Selector
     
     @objc func handleProfileImageTapped() {
-        
+        delegate?.didTapProfileImage(self)
     }
     
     // MARK: - Functions
