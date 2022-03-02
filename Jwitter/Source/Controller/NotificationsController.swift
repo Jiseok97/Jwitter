@@ -14,7 +14,9 @@ class NotificationsController: UITableViewController {
     // MARK: - Properties
     
     private var notifications = [Notification]() {
-        didSet { tableView.reloadData() }
+        didSet { tableView.reloadData()
+            print("DEBUG: notifications is \(notifications)")
+        }
     }
     
     // MARK: - Life Cycle
@@ -22,6 +24,12 @@ class NotificationsController: UITableViewController {
         super.viewDidLoad()
         configureUI()
         fetchNotifications()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.barStyle = .default
     }
     
     // MARK: - API
@@ -61,6 +69,21 @@ extension NotificationsController {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
+
+extension NotificationsController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let notification = notifications[indexPath.row]
+        guard let tweetID = notification.tweetID else { return }
+        
+        TweetService.shared.fetchTweet(withTweetID: tweetID) { tweet in
+            let controller = TweetController(tweet: tweet)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
+
 
 // MARK: - NotificationCellDelegate
 
