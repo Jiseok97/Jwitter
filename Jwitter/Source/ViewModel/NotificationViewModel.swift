@@ -54,6 +54,10 @@ struct NotificationViewModel {
         return type != .follow
     }
     
+    var followButtonText: String {
+        return user.isFollowed ? "Following" : "Follow"
+    }
+    
     init(notification: Notification) {
         self.notification = notification
         self.type = notification.type
