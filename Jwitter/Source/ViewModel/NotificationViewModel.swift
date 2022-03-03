@@ -38,10 +38,10 @@ struct NotificationViewModel {
                                                        attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12)])
         
         attributedText.append(NSAttributedString(string: notificationMessage,
-                                                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]))
+                                                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11)]))
         
         attributedText.append(NSAttributedString(string: " \(timestamp)",
-                                                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12),
+                                                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11),
                                                               NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
         return attributedText
     }
