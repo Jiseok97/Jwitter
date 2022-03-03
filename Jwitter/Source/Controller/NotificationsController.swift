@@ -14,9 +14,7 @@ class NotificationsController: UITableViewController {
     // MARK: - Properties
     
     private var notifications = [Notification]() {
-        didSet { tableView.reloadData()
-            print("DEBUG: notifications is \(notifications)")
-        }
+        didSet { tableView.reloadData() }
     }
     
     // MARK: - Life Cycle
@@ -32,10 +30,19 @@ class NotificationsController: UITableViewController {
         navigationController?.navigationBar.barStyle = .default
     }
     
+    // MARK: - Selectors
+    
+    @objc func handleRefresh() {
+        fetchNotifications()
+    }
+    
     // MARK: - API
     
     func fetchNotifications() {
+        refreshControl?.beginRefreshing()
+        
         NotificationService.shared.fetchNotifications { notifications in
+            self.refreshControl?.endRefreshing()
             self.notifications = notifications
             self.checkIfUserIsFollowed(notifications: notifications)
         }
@@ -62,6 +69,10 @@ class NotificationsController: UITableViewController {
         tableView.register(NotificationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 60
         tableView.separatorStyle = .none
+        
+        let refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
     }
 }
 
