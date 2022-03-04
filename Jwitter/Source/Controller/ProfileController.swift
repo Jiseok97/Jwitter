@@ -16,8 +16,20 @@ class ProfileController: UICollectionViewController {
     
     private var user: User
     
-    private var tweets = [Tweet]() {
+    private var selectedFilter: ProfileFilterOptions = .tweets {        // 유저가 선택한 탭 Type 변수
         didSet { collectionView.reloadData() }
+    }
+    
+    private var tweets = [Tweet]()                                      // 일반 트윗 탭
+    private var replies = [Tweet]()                                     // 트윗 & 답장 탭
+    private var likedTweets = [Tweet]()                                 // 좋아한 트윗 탭
+    
+    private var currentDataSource: [Tweet] {
+        switch selectedFilter {
+        case .tweets: return tweets
+        case .replies: return replies
+        case .likes: return likedTweets
+        }
     }
     
     // MARK: - Life Cycle
@@ -54,6 +66,7 @@ class ProfileController: UICollectionViewController {
     func fetchTweets() {
         TweetService.shared.fetchTweets(forUser: user) { tweets in
             self.tweets = tweets
+            self.collectionView.reloadData()
         }
     }
     
@@ -106,13 +119,13 @@ extension ProfileController {
 
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tweets.count
+        return currentDataSource.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TweetCell
         
-        cell.tweet = tweets[indexPath.row]
+        cell.tweet = currentDataSource[indexPath.row]
         
         return cell
     }
