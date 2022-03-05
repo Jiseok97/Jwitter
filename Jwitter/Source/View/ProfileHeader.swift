@@ -88,12 +88,6 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
-    private let underlineView: UIView = {               // 필터 탭 누를 때 따라다니는 아래 애니메이션 뷰
-        let view = UIView()
-        view.backgroundColor = .twitterBlue
-        return view
-    }()
-    
     private let followingLabel: UILabel = {
         let label = UILabel()
         
@@ -154,9 +148,6 @@ class ProfileHeader: UICollectionReusableView {
         
         addSubview(filterBar)
         filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
-        
-        addSubview(underlineView)
-        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, width: frame.width / 3, height: 2)
     }
     
     required init?(coder: NSCoder) {
@@ -210,11 +201,11 @@ class ProfileHeader: UICollectionReusableView {
 extension ProfileHeader: ProfileFilterViewDelegate {
     // ProfileFilter View의 Collection View Delegate(didSelectItemAt)에 구현 되어 있는 Protocol
     func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
-        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else { return }
-        
-        let xPostion = cell.frame.origin.x
-        UIView.animate(withDuration: 0.3) {
-            self.underlineView.frame.origin.x = xPostion
-        }
+//        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else { return }
+//
+//        let xPostion = cell.frame.origin.x
+//        UIView.animate(withDuration: 0.3) {
+//            self.underlineView.frame.origin.x = xPostion
+//        }
     }
 }

@@ -21,13 +21,19 @@ class ProfileFilterView: UIView {
     
     weak var delegate: ProfileFilterViewDelegate?
     
-    lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {       // 필터 Collection View
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
         cv.delegate = self
         cv.dataSource = self
         return cv
+    }()
+    
+    private let underlineView: UIView = {               // 필터 탭 누를 때 따라다니는 아래 애니메이션 뷰
+        let view = UIView()
+        view.backgroundColor = .twitterBlue
+        return view
     }()
     
     // MARK: - Life Cycle
@@ -43,6 +49,14 @@ class ProfileFilterView: UIView {
         
         addSubview(collectionView)
         collectionView.addConstraintsToFillView(self)
+    }
+    
+    override func layoutSubviews() {
+        // init에 Frame.width = 0, Frame이 잡히기전에 생성이 되므로, layout subview를 통해 Frame이 잡히고
+        // underlineView를 넣어 주었다.
+        
+        addSubview(underlineView)
+        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, width: frame.width / 3, height: 2)
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +99,14 @@ extension ProfileFilterView: UICollectionViewDelegateFlowLayout {
 
 extension ProfileFilterView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Underline View 애니메이션
+        let cell = collectionView.cellForItem(at: indexPath)
+        let xPostion = cell?.frame.origin.x ?? 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.underlineView.frame.origin.x = xPostion
+        }
+        
         delegate?.filterView(self, didSelect: indexPath)
     }
 }
