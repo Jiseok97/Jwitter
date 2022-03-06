@@ -12,7 +12,7 @@ private let reuseIdentifier = "ProfileFilterCell"
 /// 필터 클릭시 이벤트 조정을 위한 프로토콜
 protocol ProfileFilterViewDelegate: class {
     /// Collection View didSelectItemAt 이용
-    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath)
+    func filterView(_ view: ProfileFilterView, didSelect index: Int)
 }
 
 class ProfileFilterView: UIView {
@@ -107,6 +107,6 @@ extension ProfileFilterView: UICollectionViewDelegate {
             self.underlineView.frame.origin.x = xPostion
         }
         
-        delegate?.filterView(self, didSelect: indexPath)
+        delegate?.filterView(self, didSelect: indexPath.row)
     }
 }

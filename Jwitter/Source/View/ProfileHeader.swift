@@ -12,6 +12,7 @@ protocol ProfileHeaderDelegate: class {
     /// 프로필 헤더의 dismiss 기능을 위한 Protocol
     func handleDismissal ()
     func handleEditProfileFollow(_ header: ProfileHeader)
+    func didSelect(filter: ProfileFilterOptions)
 }
 
 class ProfileHeader: UICollectionReusableView {
@@ -199,13 +200,8 @@ class ProfileHeader: UICollectionReusableView {
 // MARK: - ProfileFilterViewDelegate
 
 extension ProfileHeader: ProfileFilterViewDelegate {
-    // ProfileFilter View의 Collection View Delegate(didSelectItemAt)에 구현 되어 있는 Protocol
-    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath) {
-//        guard let cell = view.collectionView.cellForItem(at: indexPath) as? ProfileFilterCell else { return }
-//
-//        let xPostion = cell.frame.origin.x
-//        UIView.animate(withDuration: 0.3) {
-//            self.underlineView.frame.origin.x = xPostion
-//        }
+    func filterView(_ view: ProfileFilterView, didSelect index: Int) {
+        guard let filter = ProfileFilterOptions(rawValue: index) else { return }
+        delegate?.didSelect(filter: filter)
     }
 }
