@@ -97,6 +97,19 @@ struct TweetService {
         }
     }
     
+    /// 좋아한 트윗 데이터 가져오는 메서드
+    func fetchLikes(forUser user: User, completion: @escaping([Tweet]) -> Void) {
+        var tweets = [Tweet]()
+        
+        REF_USER_LIKES.child(user.uid).observe(.childAdded) { snapshot in
+            let tweetID = snapshot.key
+            self.fetchTweet(withTweetID: tweetID) { tweet in
+                tweets.append(tweet)
+                completion(tweets)
+            }
+        }
+    }
+    
     /// 트윗 좋아요 API
     func likeTweet(tweet: Tweet, completion: @escaping(DatabaseCompletion)) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
