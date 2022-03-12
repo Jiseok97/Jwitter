@@ -9,6 +9,8 @@ import UIKit
 
 struct TweetViewModel {
     
+    // MARK: - Propeties
+    
     let tweet: Tweet
     let user: User
     
@@ -71,6 +73,9 @@ struct TweetViewModel {
         let imageName = tweet.didLike ? "like_filled" : "like"
         return UIImage(named: imageName)!
     }
+    
+    
+    // MARK: - Life Cycle
     
     init(tweet: Tweet) {
         self.tweet = tweet
