@@ -74,6 +74,14 @@ struct TweetViewModel {
         return UIImage(named: imageName)!
     }
     
+    var shouldHideReplyLabel: Bool {                // reply일 경우 보이도록 || reply가 아니면 안보이도록
+        return !tweet.isReply
+    }
+    
+    var replyText: String? {
+        guard let replyingToUsername = tweet.replyingTo else { return nil }
+        return "→ replying to @\(replyingToUsername)"
+    }
     
     // MARK: - Life Cycle
     

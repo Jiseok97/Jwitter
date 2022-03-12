@@ -50,7 +50,6 @@ class TweetCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "→ replying to @testUser"
         return label
     }()
     
@@ -58,7 +57,6 @@ class TweetCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.text = "테스트 라벨.."
         return label
     }()
     
@@ -193,5 +191,8 @@ class TweetCell: UICollectionViewCell {
         infoLabel.attributedText = viewModel.userInfoText
         likeButton.tintColor = viewModel.likeButtonTintColor
         likeButton.setImage(viewModel.likeButtonImage, for: .normal)
+       
+        replyLabel.isHidden = viewModel.shouldHideReplyLabel                        // reply일 경우에 replyLabel이 보이도록
+        replyLabel.text = viewModel.replyText
     }
 }
