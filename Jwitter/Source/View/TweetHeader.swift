@@ -77,6 +77,14 @@ class TweetHeader: UICollectionReusableView {
         return button
     }()
     
+    private let replyLabel: UILabel = {             // → replying to @Nickname (Label)
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 12)
+        
+        return label
+    }()
+    
     private lazy var retweetsLabel = UILabel()          // 리트윗 Lable
     private lazy var likesLabel = UILabel()             // 좋아요 Label
     
@@ -137,8 +145,13 @@ class TweetHeader: UICollectionReusableView {
         labelStack.axis = .vertical
         labelStack.spacing = -6
         
-        let stack = UIStackView(arrangedSubviews: [ profileImageView, labelStack ])
-        stack.spacing = 12
+        let imageCaptionStack = UIStackView(arrangedSubviews: [ profileImageView, labelStack ])
+        imageCaptionStack.spacing = 12
+        
+        let stack = UIStackView(arrangedSubviews: [ replyLabel, imageCaptionStack ])
+        stack.axis = .vertical
+        stack.spacing = 8
+        stack.distribution = .fillProportionally
         
         addSubview(stack)
         stack.anchor(top: topAnchor, left: leftAnchor, paddingTop: 16, paddingLeft: 16)
@@ -211,12 +224,18 @@ class TweetHeader: UICollectionReusableView {
         captionLabel.text = tweet.caption
         fullnameLabel.text = tweet.user.fullname
         usernameLabel.text = viewModel.usernameText
-        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         dateLabel.text = viewModel.headerTimestamp
+        
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        
         retweetsLabel.attributedText = viewModel.retweetsAtrributedString
         likesLabel.attributedText = viewModel.likesAttributedString
+        
         likeButton.tintColor = viewModel.likeButtonTintColor
         likeButton.setImage(viewModel.likeButtonImage, for: .normal)
+        
+        replyLabel.isHidden = viewModel.shouldHideReplyLabel
+        replyLabel.text = viewModel.replyText
     }
     
     /// 트윗 아래 버튼 구성 메서드
