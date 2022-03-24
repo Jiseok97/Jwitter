@@ -45,16 +45,18 @@ struct TweetService {
     /// 트윗 데이터 가져오는 함수
     func feetchTwetts(completion: @escaping([Tweet]) -> Void) {
         var tweets = [Tweet]()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        REF_TWEETS.observe(.childAdded) { snapshot in
-            guard let dicitionary = snapshot.value as? [String: Any] else { return }
-            guard let uid = dicitionary["uid"] as? String else { return }
-            let tweetID = snapshot.key
+        REF_USER_FOLLOWING.child(uid).observe(.childAdded) { snapshot in
+            let uid = snapshot.key
             
-            UserService.shared.fetchUser(uid: uid) { user in
-                let tweet = Tweet(user: user, tweetID: tweetID, dictionary: dicitionary)
-                tweets.append(tweet)
-                completion(tweets)
+            REF_USER_TWEETS.child(uid).observe(.childAdded) { snapshot in
+                let tweetID = snapshot.key
+                
+                self.fetchTweet(withTweetID: tweetID) { tweet in
+                    tweets.append(tweet)
+                    completion(tweets)
+                }
             }
         }
     }
