@@ -37,13 +37,23 @@ class FeedController: UICollectionViewController {
     }
     
     
+    // MARK: - Selectors
+    
+    @objc func handleRefresh() {
+        fetchTweets()
+    }
+    
+    
     // MARK: - API
     
     /// 트윗 데이터 불러오기
     func fetchTweets() {
+        collectionView.refreshControl?.beginRefreshing()
+        
         TweetService.shared.feetchTwetts { tweets in
             self.tweets = tweets
             self.checkIfUserLikedTweets(self.tweets)
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
     
@@ -68,11 +78,16 @@ class FeedController: UICollectionViewController {
         collectionView.register(TweetCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.backgroundColor = .white
         
-        /// 가운데 로고 이미지 뷰
+        // 가운데 로고 이미지 뷰
         let logoView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         logoView.contentMode = .scaleAspectFit
         logoView.setDimensions(width: 44, height: 44)
         navigationItem.titleView = logoView
+        
+        // 게시물 데이터 변동이 있을 때 새로고침을 하기 위함
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
         
     }
     
