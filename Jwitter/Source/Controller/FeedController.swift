@@ -51,10 +51,9 @@ class FeedController: UICollectionViewController {
         collectionView.refreshControl?.beginRefreshing()
         
         TweetService.shared.feetchTwetts { tweets in
-            self.tweets = tweets
-            self.checkIfUserLikedTweets(self.tweets)
-            
             self.tweets = tweets.sorted(by: { $0.timestamp > $1.timestamp })
+            self.checkIfUserLikedTweets()
+//            self.tweets = tweets.sorted(by: { $0.timestamp > $1.timestamp })
 //            self.tweets = tweets.sorted(by: { (tweet1, tweet2) -> Bool in
 //                return tweet1.timestamp > tweet2.timestamp
 //            })
@@ -64,12 +63,14 @@ class FeedController: UICollectionViewController {
     }
     
     /// 트윗 좋아요 데이터 불러오기
-    func checkIfUserLikedTweets(_ tweets: [Tweet]) {
-        for (index, tweet) in tweets.enumerated() {
+    func checkIfUserLikedTweets() {
+        self.tweets.forEach { tweet in
             TweetService.shared.checkIfUserLikedTweet(tweet) { didLike in
                 guard didLike == true else { return }
                 
-                self.tweets[index].didLike = true
+                if let index = self.tweets.firstIndex(where: { $0.tweetID == tweet.tweetID }) {
+                    self.tweets[index].didLike = true
+                }
             }
         }
     }
