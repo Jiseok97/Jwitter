@@ -187,6 +187,10 @@ extension ProfileController: ProfileHeaderDelegate {
     func handleEditProfileFollow(_ header: ProfileHeader) {
         // 본인 계정일 경우에도 팔로우 기능이 되기 때문에 수정하기 위한 if문
         if user.isCurrentUser {
+            let controller = EditProfileController(user: user)
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .overFullScreen
+            present(nav, animated: true, completion: nil)
             return
         }
         
