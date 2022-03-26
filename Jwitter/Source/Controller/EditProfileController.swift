@@ -73,5 +73,16 @@ class EditProfileController: UITableViewController {
         tableView.tableHeaderView = headerView
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180)
         tableView.tableFooterView = UIView()
+        
+        headerView.delegate = self
+    }
+}
+
+
+// MARK: - EditProfileHeaderDelegate
+
+extension EditProfileController: EditProfileHeaderDelegate {
+    func didTapChangeProfilePhoto() {
+        print("DEBUG: Handle change Photo")
     }
 }
