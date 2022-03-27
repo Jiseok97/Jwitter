@@ -50,7 +50,7 @@ class UploadTweetController: UIViewController {
         return label
     }()
     
-    private let captionTextView = CaptionTextView()                     // 게시물 글
+    private let captionTextView = InputTextView()                     // 게시물 글
     
     
     
