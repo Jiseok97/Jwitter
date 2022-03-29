@@ -152,10 +152,11 @@ extension EditProfileController: EditProfileCellDelegate {
             guard let username = cell.infoTextField.text else { return }
             user.fullname = username
         case .bio:
-            print("DEBUG: Update user bio")
+            user.bio = cell.bioTextView.text
         }
         
         print("DEBUG: Fullname is \(user.fullname)")
         print("DEBUG: Username is \(user.username)")
+        print("DEBUG: Biod is \(user.bio)")
     }
 }

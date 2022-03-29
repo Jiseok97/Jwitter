@@ -64,6 +64,8 @@ class EditProfileCell: UITableViewCell {
         contentView.addSubview(bioTextView)
         bioTextView.anchor(top: topAnchor, left: titleLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor,
                            paddingTop: 4, paddingLeft: 16, paddingRight: 8)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateUserInfo), name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     required init?(coder: NSCoder) {
