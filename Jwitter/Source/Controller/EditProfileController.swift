@@ -9,6 +9,10 @@ import UIKit
 
 private let reuseIdentifier = "EditProfileCell"
 
+protocol EditProfileControllerDelegate: class {
+    func controller(_ controller: EditProfileController, wantsToUpdate user: User)
+}
+
 class EditProfileController: UITableViewController {
     
     // MARK: - Properties
@@ -16,8 +20,8 @@ class EditProfileController: UITableViewController {
     private var user: User
     private lazy var headerView = EditProfileHeader(user: user)
     private let imagePicker = UIImagePickerController()
-    
     private var userInfoChnaged = false
+    weak var delegate: EditProfileControllerDelegate?
     
     private var selectedImage: UIImage? {
         didSet { headerView.profileImageView.image = selectedImage }
@@ -58,8 +62,7 @@ class EditProfileController: UITableViewController {
     
     func updateUserData() {
         UserService.shared.saveUserData(user: user) { (err, ref) in
-            print("DEBUG: Did update user info..")
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.controller(self, wantsToUpdate: self.user)
         }
     }
     
