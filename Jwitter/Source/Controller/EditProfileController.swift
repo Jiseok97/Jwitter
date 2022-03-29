@@ -17,6 +17,8 @@ class EditProfileController: UITableViewController {
     private lazy var headerView = EditProfileHeader(user: user)
     private let imagePicker = UIImagePickerController()
     
+    private var userInfoChnaged = false
+    
     private var selectedImage: UIImage? {
         didSet { headerView.profileImageView.image = selectedImage }
     }
@@ -48,11 +50,18 @@ class EditProfileController: UITableViewController {
     }
     
     @objc func handleDone() {
-        dismiss(animated: true, completion: nil)
+        updateUserData()
     }
     
     
     // MARK: - API
+    
+    func updateUserData() {
+        UserService.shared.saveUserData(user: user) { (err, ref) in
+            print("DEBUG: Did update user info..")
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     
     // MARK: - Functions
@@ -94,6 +103,9 @@ class EditProfileController: UITableViewController {
     }
 }
 
+
+// MARK: - UITableViewDataSource
+
 extension EditProfileController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EditProfileOptions.allCases.count
@@ -111,6 +123,7 @@ extension EditProfileController {
     }
 }
 
+// MARK: - UITableViewDelegate
 
 extension EditProfileController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -128,6 +141,7 @@ extension EditProfileController: EditProfileHeaderDelegate {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate
 
 extension EditProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -139,10 +153,14 @@ extension EditProfileController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+// MARK: - EditProfileCellDelegate
 
 extension EditProfileController: EditProfileCellDelegate {
     func updateUserInfo(_ cell: EditProfileCell) {
         guard let viewModel = cell.viewModel else { return }
+        userInfoChnaged = true
+//        navigationItem.rightBarButtonItem?.isEnabled = userInfoChnaged
+        navigationItem.rightBarButtonItem?.isEnabled = true
         
         switch viewModel.option {
         case .fullname:
@@ -154,9 +172,5 @@ extension EditProfileController: EditProfileCellDelegate {
         case .bio:
             user.bio = cell.bioTextView.text
         }
-        
-        print("DEBUG: Fullname is \(user.fullname)")
-        print("DEBUG: Username is \(user.username)")
-        print("DEBUG: Biod is \(user.bio)")
     }
 }

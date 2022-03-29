@@ -79,4 +79,16 @@ struct UserService {
             }
         }
     }
+    
+    
+    /// 편집한 유저 정보 저장 메서드
+    func saveUserData(user: User, completion: @escaping(DatabaseCompletion)) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let values = [ "fullname": user.fullname,
+                       "username": user.username,
+                       "bio": user.bio ?? "" ]
+        
+        REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
+    }
 }
