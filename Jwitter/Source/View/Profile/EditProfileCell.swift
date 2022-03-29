@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EditProfileCellDelegate: class {
+    func updateUserInfo(_ cell: EditProfileCell)
+}
+
 class EditProfileCell: UITableViewCell {
     
     // MARK: - Properties
@@ -14,6 +18,8 @@ class EditProfileCell: UITableViewCell {
     var viewModel: EditProfileViewModel? {
         didSet { configure() }
     }
+    
+    weak var delegate: EditProfileCellDelegate?
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -47,15 +53,15 @@ class EditProfileCell: UITableViewCell {
         
         selectionStyle = .none
         
-        addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         titleLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         titleLabel.anchor(top: topAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 16)
         
-        addSubview(infoTextField)
+        contentView.addSubview(infoTextField)
         infoTextField.anchor(top: topAnchor, left: titleLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor,
                              paddingTop: 4, paddingLeft: 16, paddingRight: 8)
         
-        addSubview(bioTextView)
+        contentView.addSubview(bioTextView)
         bioTextView.anchor(top: topAnchor, left: titleLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor,
                            paddingTop: 4, paddingLeft: 16, paddingRight: 8)
     }
@@ -68,7 +74,7 @@ class EditProfileCell: UITableViewCell {
     // MARK: - Selector
     
     @objc func handleUpdateUserInfo() {
-        
+        delegate?.updateUserInfo(self)
     }
     
     

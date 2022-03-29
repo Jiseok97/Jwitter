@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 struct User {
-    let fullname: String
+    var fullname: String
     let email: String
     let username: String
     var profileImageUrl: URL?
