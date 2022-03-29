@@ -5,6 +5,7 @@
 //  Created by 이지석 on 2022/02/11.
 //
 
+import UIKit
 import Firebase
 
 /// 팔로우/언팔로우 Completion
@@ -76,6 +77,25 @@ struct UserService {
                 
                 let stats = UserRelationStats(followers: followers, following: following)
                 completion(stats)
+            }
+        }
+    }
+    
+    /// 유저 프로필 이미지 업데이트 메서드
+    func updateProfileImage(image: UIImage, completion: @escaping(URL?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let filename = NSUUID.init().uuidString
+        let ref = STORAGE_PROFILE_IMAGES.child(filename)
+        
+        ref.putData(imageData, metadata: nil) { (meta, error) in
+            ref.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                let value = [ "profileImageUrl": profileImageUrl ]
+                
+                REF_USERS.child(uid).updateChildValues(value) { (err, ref) in
+                    completion(url)
+                }
             }
         }
     }

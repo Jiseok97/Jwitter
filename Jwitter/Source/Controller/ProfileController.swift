@@ -189,6 +189,7 @@ extension ProfileController: ProfileHeaderDelegate {
         if user.isCurrentUser {
             let controller = EditProfileController(user: user)
             controller.delegate = self
+            
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .overFullScreen
             present(nav, animated: true, completion: nil)
