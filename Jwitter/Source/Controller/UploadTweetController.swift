@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ActiveLabel
 
 class UploadTweetController: UIViewController {
     
@@ -41,11 +42,11 @@ class UploadTweetController: UIViewController {
         return iv
     }()
     
-    private lazy var replyLabel: UILabel = {                                 // 답장 시 보이는 Label
-        let label = UILabel()
+    private lazy var replyLabel: ActiveLabel = {                                 // 답장 시 보이는 Label
+        let label = ActiveLabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "replying to @BossJS"
+        label.mentionColor = .twitterBlue
         label.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         return label
     }()
@@ -68,7 +69,9 @@ class UploadTweetController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
+        configureMentionHandler()
     }
     
     
@@ -138,5 +141,12 @@ class UploadTweetController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: actionButton)
     }
     
+    
+    /// 태그 클릭 이벤트 메서드
+    func configureMentionHandler() {
+        replyLabel.handleMentionTap { mention in
+            print("DEBUG: mention user is \(mention)")
+        }
+    }
 }
 
