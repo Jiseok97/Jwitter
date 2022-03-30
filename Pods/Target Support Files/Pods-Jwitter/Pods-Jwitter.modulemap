@@ -1,0 +1,6 @@
+module Pods_Jwitter {
+  umbrella header "Pods-Jwitter-umbrella.h"
+
+  export *
+  module * { export * }
+}

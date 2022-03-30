@@ -12,4 +12,7 @@ target 'Jwitter' do
   # For Image
   pod 'SDWebImage', :modular_headers => true
 
+  # For mention
+  pod 'ActiveLabel'
+
 end
