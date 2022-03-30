@@ -111,4 +111,13 @@ struct UserService {
         
         REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
+    
+    
+    /// 태그를 통한 유저 정보 가져오는 메서드
+    func fetchUser(withUsername username: String, completion: @escaping(User) -> Void) {
+        REF_USER_USERNAME.child(username).observeSingleEvent(of: .value) { snapshot in
+            guard let uid = snapshot.value as? String else { return }
+            self.fetchUser(uid: uid, completion: completion)
+        }
+    }
 }

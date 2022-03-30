@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import ActiveLabel
 
 protocol TweetHeaderDelegate: class {
     func showActinoSheet()
+    func handleFetchUser(withUsername username: String)
 }
 
 class TweetHeader: UICollectionReusableView {
@@ -52,11 +54,12 @@ class TweetHeader: UICollectionReusableView {
         return label
     }()
     
-    private let captionLabel: UILabel = {               // 트윗 내용 Label
-        let label = UILabel()
+    private let captionLabel: ActiveLabel = {               // 트윗 내용 Label
+        let label = ActiveLabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 0
-        label.text = "트윗 최초 기본 값 내용입니다."
+        label.mentionColor = .twitterBlue
+        label.hashtagColor = .twitterBlue
         return label
     }()
     
@@ -77,10 +80,11 @@ class TweetHeader: UICollectionReusableView {
         return button
     }()
     
-    private let replyLabel: UILabel = {             // → replying to @Nickname (Label)
-        let label = UILabel()
+    private let replyLabel: ActiveLabel = {             // → replying to @Nickname (Label)
+        let label = ActiveLabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 12)
+        label.mentionColor = .twitterBlue
         
         return label
     }()
@@ -176,6 +180,8 @@ class TweetHeader: UICollectionReusableView {
         addSubview(actionStack)
         actionStack.centerX(inView: self)
         actionStack.anchor(top: stacksView.bottomAnchor, paddingTop: 12)
+        
+        configureMentionHandler()
     }
     
     required init?(coder: NSCoder) {
@@ -245,5 +251,12 @@ class TweetHeader: UICollectionReusableView {
         button.tintColor = .darkGray
         button.setDimensions(width: 20, height: 20)
         return button
+    }
+    
+    /// 태그 클릭 이벤트 메서드
+    func configureMentionHandler() {
+        captionLabel.handleMentionTap { username in
+            self.delegate?.handleFetchUser(withUsername: username)
+        }
     }
 }

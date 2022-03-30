@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ActiveLabel
 
 // class에서만 사용 가능하도록 설정
 protocol TweetCellDelegate: class {
@@ -15,6 +16,8 @@ protocol TweetCellDelegate: class {
     func handleReplyTapped(_ cell: TweetCell)
     /// 피드에 좋아요 이벤트 메서드
     func handleLikeTapped(_ cell: TweetCell)
+    /// 맨션 클릭을 통한 유저 정보 가져오는 메서드
+    func handleFetchUser(withUsername username: String)
 }
 
 
@@ -46,17 +49,20 @@ class TweetCell: UICollectionViewCell {
         return iv
     }()
     
-    private let replyLabel: UILabel = {             // → replying to @Nickname (Label)
-        let label = UILabel()
+    private let replyLabel: ActiveLabel = {             // → replying to @Nickname (Label)
+        let label = ActiveLabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 12)
+        label.mentionColor = .twitterBlue
         return label
     }()
     
-    private let captionLabel: UILabel = {           // 게시글 Label
-        let label = UILabel()
+    private let captionLabel: ActiveLabel = {           // 게시글 Label
+        let label = ActiveLabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
+        label.mentionColor = .twitterBlue
+        label.hashtagColor = .twitterBlue
         return label
     }()
     
@@ -149,6 +155,8 @@ class TweetCell: UICollectionViewCell {
         addSubview(underlineView)
         underlineView.anchor(left: leftAnchor, bottom: bottomAnchor,
                              right: rightAnchor, height: 1)
+        
+        configureMentionHandler()
     }
     
     required init?(coder: NSCoder) {
@@ -194,5 +202,13 @@ class TweetCell: UICollectionViewCell {
        
         replyLabel.isHidden = viewModel.shouldHideReplyLabel                        // reply일 경우에 replyLabel이 보이도록
         replyLabel.text = viewModel.replyText
+    }
+    
+    
+    /// 태그 클릭 이벤트 메서드
+    func configureMentionHandler() {
+        captionLabel.handleMentionTap { username in
+            self.delegate?.handleFetchUser(withUsername: username)
+        }
     }
 }
