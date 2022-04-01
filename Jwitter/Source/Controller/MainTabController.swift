@@ -35,7 +35,6 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        logUserOut()
         view.backgroundColor = .twitterBlue
         authenticateUserAndConfigureUI()
     }
@@ -48,9 +47,10 @@ class MainTabController: UITabBarController {
         if Auth.auth().currentUser == nil {
             // 로그인 필요
             DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: LoginController())
-                nav.modalPresentationStyle = .overFullScreen
-                self.present(nav, animated: true, completion: nil)
+                self.changeRootViewController(LoginController())
+//                let nav = UINavigationController(rootViewController: LoginController())
+//                nav.modalPresentationStyle = .overFullScreen
+//                self.present(nav, animated: true, completion: nil)
             }
         } else {
             // 로그인
@@ -65,16 +65,6 @@ class MainTabController: UITabBarController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.shared.fetchUser(uid: uid) { user in
             self.user = user
-        }
-    }
-    
-    /// 로그아웃 기능
-    func logUserOut() {
-        do {
-            try Auth.auth().signOut()
-            print("DEBUG: 로그아웃 되었습니다.")
-        } catch let error {
-            print("DEBUG: 로그아웃에 실패했습니다.\(error.localizedDescription)")
         }
     }
     
