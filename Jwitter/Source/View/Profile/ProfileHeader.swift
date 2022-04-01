@@ -83,7 +83,7 @@ class ProfileHeader: UICollectionReusableView {
     
     private let bioLabel: UILabel = {                   // 유저 상태 메세지
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 3
         return label
     }()
