@@ -50,7 +50,6 @@ class TweetHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "BossJiseok"
         return label
     }()
     
@@ -68,7 +67,6 @@ class TweetHeader: UICollectionReusableView {
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .left
-        label.text = "6:33 PM - 2/22/2022"
         return label
     }()
     
