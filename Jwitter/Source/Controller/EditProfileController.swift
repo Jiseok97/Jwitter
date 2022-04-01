@@ -213,6 +213,14 @@ extension EditProfileController: EditProfileCellDelegate {
 
 extension EditProfileController: EditProfileFooterDelegate {
     func handleLogout() {
-        print("DEBUG: logout button")
+        
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
+            print("DEBUG: handle log user out ...")
+        }))
+        alert.addAction(UIAlertAction(title: "Cencel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
