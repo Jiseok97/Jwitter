@@ -34,14 +34,22 @@ struct NotificationService {
         var notifications = [Notification]()
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        REF_NOTIFICATIONS.child(uid).observe(.childAdded) { snapshot in
-            guard let dicitionary = snapshot.value as? [String: AnyObject] else { return }
-            guard let uid = dicitionary["uid"] as? String else { return }
-            
-            UserService.shared.fetchUser(uid: uid) { user in
-                let notification = Notification(user: user, dictionary: dicitionary)
-                notifications.append(notification)
+        // 유저 알림 데이터가 있는지 확인
+        REF_NOTIFICATIONS.child(uid).observeSingleEvent(of: .value) { snapshot in
+            if !snapshot.exists() {
+                // 유저의 알림 데이터 X
                 completion(notifications)
+            } else {
+                REF_NOTIFICATIONS.child(uid).observe(.childAdded) { snapshot in
+                    guard let dicitionary = snapshot.value as? [String: AnyObject] else { return }
+                    guard let uid = dicitionary["uid"] as? String else { return }
+                    
+                    UserService.shared.fetchUser(uid: uid) { user in
+                        let notification = Notification(user: user, dictionary: dicitionary)
+                        notifications.append(notification)
+                        completion(notifications)
+                    }
+                }
             }
         }
     }
