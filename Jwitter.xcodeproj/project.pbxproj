@@ -44,7 +44,7 @@
 		B691D72327BA6FF00041117A /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B691D72227BA6FF00041117A /* TweetCell.swift */; };
 		B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F3C27B1606300717F2F /* MainTabController.swift */; };
 		B6941F3F27B1612100717F2F /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F3E27B1612100717F2F /* FeedController.swift */; };
-		B6941F4127B1615700717F2F /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4027B1615700717F2F /* ExploreController.swift */; };
+		B6941F4127B1615700717F2F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4027B1615700717F2F /* SearchController.swift */; };
 		B6941F4327B1616700717F2F /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4227B1616700717F2F /* NotificationsController.swift */; };
 		B6941F4527B1617100717F2F /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6941F4427B1617100717F2F /* ConversationsController.swift */; };
 		B69F481427C767D800B71649 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F481327C767D800B71649 /* UploadTweetViewModel.swift */; };
@@ -98,7 +98,7 @@
 		B691D72227BA6FF00041117A /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		B6941F3C27B1606300717F2F /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		B6941F3E27B1612100717F2F /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
-		B6941F4027B1615700717F2F /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		B6941F4027B1615700717F2F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B6941F4227B1616700717F2F /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		B6941F4427B1617100717F2F /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 		B69F481327C767D800B71649 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 				B688634A27B1FC8C00F94A82 /* Authentication */,
 				B6941F3C27B1606300717F2F /* MainTabController.swift */,
 				B6941F3E27B1612100717F2F /* FeedController.swift */,
-				B6941F4027B1615700717F2F /* ExploreController.swift */,
+				B6941F4027B1615700717F2F /* SearchController.swift */,
 				B6941F4227B1616700717F2F /* NotificationsController.swift */,
 				B6941F4427B1617100717F2F /* ConversationsController.swift */,
 				B630A92427B7C0BF00215CED /* UploadTweetController.swift */,
@@ -425,7 +425,7 @@
 				B612587F27EFDCE900758B04 /* EditProfileViewModel.swift in Sources */,
 				B63B7BC527B60CB9008D2EB6 /* User.swift in Sources */,
 				B604E0FF27EEB59F00F3E328 /* EditProfileHeader.swift in Sources */,
-				B6941F4127B1615700717F2F /* ExploreController.swift in Sources */,
+				B6941F4127B1615700717F2F /* SearchController.swift in Sources */,
 				B639FC0827B0E15600E07D34 /* SceneDelegate.swift in Sources */,
 				B61CF82927CCA5B800B2F9D0 /* NotificationService.swift in Sources */,
 				B6941F3D27B1606300717F2F /* MainTabController.swift in Sources */,

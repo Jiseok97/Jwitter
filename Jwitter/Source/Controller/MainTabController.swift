@@ -80,11 +80,22 @@ class MainTabController: UITabBarController {
     
     /// 우하단 버튼
     @objc func handleActionbuttonTapped() {
-        guard let user = user else { return }
-        let controller = UploadTweetController(user: user, config: .tweet)
+        
+        var controller: UIViewController
+        
+        switch buttonConfig {
+        case .tweet:
+            guard let user = user else { return }
+            controller = UploadTweetController(user: user, config: .tweet)
+            
+        case .message:
+            controller = SearchController(config: .messages)
+        }
+        
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .overFullScreen
         present(nav, animated: true, completion: nil)
+        
     }
     
     
@@ -106,7 +117,7 @@ class MainTabController: UITabBarController {
         let feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = templateNavigationController(image: UIImage(named: "home_unselected")!, rootViewController: feed)
         
-        let explore = ExploreController()
+        let explore = SearchController(config: .userSearch)
         let nav2 = templateNavigationController(image: UIImage(named: "search_unselected")!, rootViewController: explore)
         
         let notifications = NotificationsController()
