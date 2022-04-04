@@ -8,9 +8,16 @@
 import UIKit
 import Firebase
 
+enum ActionButtonConfiguration {
+    case tweet
+    case message
+}
+
 class MainTabController: UITabBarController {
     
     // MARK: - Properties
+    
+    private var buttonConfig: ActionButtonConfiguration = .tweet
     
     var user: User? {
         didSet {
@@ -84,7 +91,8 @@ class MainTabController: UITabBarController {
     // MARK: - Functions
     // UI 구성
     func configureUI() {
-        // 우하단 버튼
+        self.delegate = self
+        
         view.addSubview(actionButton)
         actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
                             paddingBottom: 64, paddingRight: 16, width: 56, height: 56)
@@ -118,4 +126,16 @@ class MainTabController: UITabBarController {
         return nav
     }
     
+}
+
+
+// MARK: - UITabBarControllerDelegate
+
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let index = viewControllers?.firstIndex(of: viewController)
+        let image = index == 3 ? #imageLiteral(resourceName: "mail") : #imageLiteral(resourceName: "new_tweet")
+        actionButton.setImage(image, for: .normal)
+        buttonConfig = index == 3 ? .message : .tweet
+    }
 }

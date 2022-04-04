@@ -49,8 +49,8 @@ class NotificationsController: UITableViewController {
     }
     
     func checkIfUserIsFollowed(notifications: [Notification]) {
-        guard notifications.isEmpty else { return }
-        
+        guard !notifications.isEmpty else { return }
+
         notifications.forEach { notification in
             guard case .follow = notification.type else { return }
             let user = notification.user
